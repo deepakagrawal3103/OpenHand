@@ -1,0 +1,63 @@
+# ==========================================
+# OpenHand - Comprehensive Root .gitignore
+# ==========================================
+
+# Dependencies
+node_modules/
+*/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Production & Build outputs
+dist/
+dist-ssr/
+build/
+*/dist/
+*/build/
+
+# Local Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+!.env.docker
+client/.env
+server/.env
+
+# SQLite Database & Storage Files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+prisma/dev.db
+server/prisma/dev.db
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE & Editor Configurations
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swo
+*.swp
+
+# Temporary directories & caches
+.cache/
+tmp/
+temp/

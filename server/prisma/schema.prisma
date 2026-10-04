@@ -1,0 +1,206 @@
+// HelpGrid Prisma Schema - Civic Problem-to-Solution Relational Model
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String         @id @default(uuid())
+  email        String         @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         String         @default("USER") // USER, HELPER, ORGANIZATION, ADMIN
+  city         String         @default("Indore")
+  avatar       String?
+  bio          String?
+  trustScore   Int            @default(90) // 0-100
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  // OpenHand ID & WhatsApp Alert Preferences
+  entityType            String         @default("INDIVIDUAL") // INDIVIDUAL, SKILLED_WORKER, NGO
+  ngoCategory           String?        // OLD_AGE_HOME, ORPHANAGE, FOOD_RESCUE, CLOTH_BANK, EDUCATION
+  wishlistTags          String?        // Comma-separated: Clothes, Food, Blankets, Medical, Books
+  primarySkill          String?        // PLUMBER, ELECTRICIAN, HARDWARE, CARPENTER, APPLIANCE, TUTOR
+  visitFee              Int?
+  whatsappNotifications Boolean        @default(true)
+  whatsappNumber        String?
+
+  requests     Request[]      @relation("UserRequests")
+  skills       UserSkill[]
+  matches      Match[]        @relation("HelperMatches")
+  tasks        Task[]         @relation("HelperTasks")
+  messages     Message[]
+  verifications Verification[]
+  notifications Notification[]
+  availability Availability?
+}
+
+model Skill {
+  id         String      @id @default(uuid())
+  name       String      @unique
+  category   String      // Hardware, Software, Electrical, Logistics, Community, Education
+  users      UserSkill[]
+}
+
+model UserSkill {
+  id         String   @id @default(uuid())
+  userId     String
+  skillId    String
+  level      String   @default("INTERMEDIATE") // BEGINNER, INTERMEDIATE, EXPERT
+  verified   Boolean  @default(false)
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill      Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skillId])
+}
+
+model Request {
+  id            String         @id @default(uuid())
+  creatorId     String
+  type          String         // NEED, GIVE, SERVICE, REPORT
+  status        String         @default("PUBLISHED") 
+  // DRAFT, PUBLISHED, MATCHING, MATCHED, ACCEPTED, IN_PROGRESS, ARRIVED, PROOF_SUBMITTED, AWAITING_VERIFICATION, RESOLVED, CANCELLED, REWORK_REQUESTED
+  title         String
+  description   String
+  category      String         // e.g. COMPUTER_HARDWARE, ELECTRICAL, TOOLS, LOGISTICS, GENERAL
+  urgency       String         @default("MEDIUM") // LOW, MEDIUM, HIGH, CRITICAL
+  lat           Float
+  lng           Float
+  locationText  String
+  deadline      DateTime?
+  affectedCount Int            @default(1)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  creator       User           @relation("UserRequests", fields: [creatorId], references: [id], onDelete: Cascade)
+  aiAudit       RequestAI?
+  matches       Match[]
+  tasks         Task[]
+  verifications Verification[]
+}
+
+model RequestAI {
+  id                  String   @id @default(uuid())
+  requestId           String   @unique
+  modelVersion        String   @default("helpgrid-triage-v1")
+  summary             String
+  categorySuggestion  String
+  urgencySuggestion   String
+  affectedCount       Int      @default(1)
+  duplicateScore      Float    @default(0.0)
+  keywords            String   // JSON stringified array of keywords
+  confidence          Float    @default(0.92)
+  createdAt           DateTime @default(now())
+
+  request             Request  @relation(fields: [requestId], references: [id], onDelete: Cascade)
+}
+
+model Match {
+  id           String   @id @default(uuid())
+  requestId    String
+  helperId     String
+  score        Int      // 0 - 100
+  skillFit     Int      // 0 - 100
+  distance     Int      // 0 - 100
+  availability Int      // 0 - 100
+  experience   Int      // 0 - 100
+  trust        Int      // 0 - 100
+  distanceKm   Float    @default(0.8)
+  explanation  String
+  status       String   @default("SUGGESTED") // SUGGESTED, NOTIFIED, ACCEPTED, DECLINED
+  createdAt    DateTime @default(now())
+
+  request      Request  @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  helper       User     @relation("HelperMatches", fields: [helperId], references: [id], onDelete: Cascade)
+
+  @@unique([requestId, helperId])
+}
+
+model Task {
+  id           String    @id @default(uuid())
+  requestId    String
+  helperId     String
+  status       String    @default("ACCEPTED")
+  // ACCEPTED, IN_PROGRESS, ARRIVED, PROOF_SUBMITTED, AWAITING_VERIFICATION, RESOLVED, REWORK_REQUESTED, CANCELLED
+  etaMinutes   Int?      @default(15)
+  acceptedAt   DateTime  @default(now())
+  startedAt    DateTime?
+  arrivedAt    DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  request      Request   @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  helper       User      @relation("HelperTasks", fields: [helperId], references: [id], onDelete: Cascade)
+  messages     Message[]
+  proofs       Proof[]
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  taskId    String
+  senderId  String
+  text      String
+  actionType String? // e.g. "ETA_UPDATE", "ARRIVED_NOTICE", "LOCATION_PING"
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  sender    User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
+}
+
+model Proof {
+  id         String   @id @default(uuid())
+  taskId     String
+  type       String   @default("AFTER") // BEFORE, AFTER, GENERAL
+  mediaUrl   String
+  note       String?
+  uploadedAt DateTime @default(now())
+
+  task       Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+}
+
+model Verification {
+  id          String   @id @default(uuid())
+  requestId   String
+  requesterId String
+  outcome     String   // CONFIRMED, REWORK_REQUESTED, DISPUTED
+  comment     String?
+  rating      Int?     @default(5)
+  createdAt   DateTime @default(now())
+
+  request     Request  @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  requester   User     @relation(fields: [requesterId], references: [id], onDelete: Cascade)
+}
+
+model Availability {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  isAvailable Boolean  @default(true)
+  radiusKm    Float    @default(5.0)
+  lat         Float?   @default(22.7196)
+  lng         Float?   @default(75.8577)
+  updatedAt   DateTime @updatedAt
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  type      String   // MATCH, TASK_UPDATE, CHAT, PROOF, VERIFICATION, SYSTEM
+  title     String
+  body      String
+  link      String?
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
