@@ -1,11 +1,11 @@
 {
-  "name": "helpgrid-server",
+  "name": "openhand-server",
   "version": "1.0.0",
-  "description": "HelpGrid API and Realtime Engine",
+  "description": "OpenHand API and Realtime Engine",
   "main": "src/index.ts",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "prisma generate && prisma db push && tsx src/prisma/seed.ts",
     "start": "tsx src/index.ts",
     "db:push": "prisma db push",
     "db:seed": "tsx src/prisma/seed.ts",
@@ -19,7 +19,9 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
+    "prisma": "^5.22.0",
     "socket.io": "^4.8.1",
+    "tsx": "^4.19.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -29,8 +31,6 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/multer": "^1.4.12",
     "@types/node": "^22.10.1",
-    "prisma": "^5.22.0",
-    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }
 }
