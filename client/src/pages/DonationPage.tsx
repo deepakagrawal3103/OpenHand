@@ -14,7 +14,44 @@ import {
   Share2,
   Clock,
   Sparkles,
+  Utensils,
+  Star,
+  AlertCircle,
+  Radio,
 } from 'lucide-react';
+import { useLocality } from '../context/LocalityContext';
+import { WhatsAppShareModal, ShareData } from '../components/ui/WhatsAppShareModal';
+import { ReviewModal } from '../components/ui/ReviewModal';
+import { FoodRescueModal, FoodRescueAlert } from '../components/ui/FoodRescueModal';
+
+const INITIAL_FOOD_ALERTS: FoodRescueAlert[] = [
+  {
+    id: 'food-demo-1',
+    title: '55 Fresh Wedding Banquet Meals (Pure Veg)',
+    quantity: '55 Thalis (Dal Makhani, Shahi Paneer, Pulao, 110 Tawa Rotis)',
+    mealType: 'Pure Veg & Jain Friendly',
+    cookedTime: 'Cooked 2 hours ago (Untouched & Covered)',
+    safeUntil: 'Tonight till 2:00 AM (Within safe window)',
+    location: 'Bypass Road, Near Brilliant Convention, Indore',
+    venueName: 'Shubh Labh Marriage Garden',
+    contactName: 'Neelesh Verma (Catering Head)',
+    contactPhone: '+91 98263 77889',
+    postedAt: '25 mins ago',
+  },
+  {
+    id: 'food-demo-2',
+    title: '30 Packed Student Hostels Mess Dinner Packs',
+    quantity: '30 Meal Containers (Rajma Masala, Steamed Rice, Phulkas)',
+    mealType: 'Pure Veg',
+    cookedTime: 'Cooked 1.5 hours ago',
+    safeUntil: 'Tonight till 12:30 AM',
+    location: 'Bhawarkua Square, Near Coaching Hub, Indore',
+    venueName: 'Shiv Shakti Boys Hostel Mess',
+    contactName: 'Dharmendra Bhaiya',
+    contactPhone: '+91 98261 44552',
+    postedAt: '40 mins ago',
+  },
+];
 
 interface NGOOrganization {
   id: string;
@@ -163,12 +200,37 @@ const INITIAL_USER_DONATIONS: DonationListing[] = [
 ];
 
 export const DonationPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'NGOS' | 'DONATE_ITEM'>('NGOS');
+  const {
+    selectedLocality,
+    radiusKm,
+    setRadiusKm,
+    currentLocalityInfo,
+    getDistanceLabel,
+    isWithinRadius,
+  } = useLocality();
+
+  const [activeTab, setActiveTab] = useState<'NGOS' | 'FOOD_RESCUE' | 'DONATE_ITEM'>('NGOS');
   const [selectedNgoFilter, setSelectedNgoFilter] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedNgo, setSelectedNgo] = useState<NGOOrganization | null>(null);
   const [isDonateModalOpen, setIsDonateModalOpen] = useState<boolean>(false);
+  const [isFoodRescueModalOpen, setIsFoodRescueModalOpen] = useState<boolean>(false);
   const [waToastMessage, setWaToastMessage] = useState<string | null>(null);
+  const [shareModalData, setShareModalData] = useState<ShareData | null>(null);
+  const [reviewTarget, setReviewTarget] = useState<{ id: string; name: string; role: string } | null>(null);
+
+  const [foodAlerts, setFoodAlerts] = useState<FoodRescueAlert[]>(() => {
+    const saved = localStorage.getItem('openhand_food_alerts_v1');
+    return saved ? JSON.parse(saved) : INITIAL_FOOD_ALERTS;
+  });
+
+  const handleFoodAlertCreated = (alert: FoodRescueAlert) => {
+    const updated = [alert, ...foodAlerts];
+    setFoodAlerts(updated);
+    localStorage.setItem('openhand_food_alerts_v1', JSON.stringify(updated));
+    setWaToastMessage(`🚨 Food Rescue Alert Dispatched! Volunteers and Annapurna Roti Bank alerted for ${alert.venueName}.`);
+    setTimeout(() => setWaToastMessage(null), 9000);
+  };
 
   const [donations, setDonations] = useState<DonationListing[]>(() => {
     const saved = localStorage.getItem('openhand_donations_list');
@@ -221,15 +283,16 @@ export const DonationPage: React.FC = () => {
 
   const filteredNgos = NGOS_DATA.filter((ngo) => {
     const matchesFilter = selectedNgoFilter === 'ALL' || ngo.type === selectedNgoFilter;
+    const matchesLocality = isWithinRadius(ngo.location);
     const matchesSearch =
       ngo.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       ngo.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
       ngo.urgentNeeds.some((need) => need.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesFilter && matchesSearch;
+    return matchesFilter && matchesLocality && matchesSearch;
   });
 
   return (
-    <div className="bg-[#FAF9F6] text-slate-900 min-h-screen font-sans w-full">
+    <div className="bg-[#F8FAFC] text-slate-900 min-h-screen font-sans w-full">
       {/* Automated WhatsApp Alert Toast */}
       {waToastMessage && (
         <div className="sticky top-16 z-40 bg-[#075E54] text-white py-3 px-4 shadow-md flex items-center justify-between">
@@ -264,6 +327,14 @@ export const DonationPage: React.FC = () => {
 
           <div className="flex flex-wrap items-center gap-3">
             <button
+              onClick={() => setIsFoodRescueModalOpen(true)}
+              className="px-5 py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+            >
+              <Utensils className="w-4 h-4" />
+              <span>🚨 Report Food for Pickup</span>
+            </button>
+
+            <button
               onClick={() => setIsDonateModalOpen(true)}
               className="px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
             >
@@ -274,33 +345,85 @@ export const DonationPage: React.FC = () => {
         </div>
       </div>
 
+      {/* FLASH FOOD RESCUE EMERGENCY TICKER */}
+      <div className="bg-amber-500/10 border-b border-amber-300/60 py-3 px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-[1560px] w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2.5 text-amber-900 font-medium">
+            <span className="relative flex h-3 w-3 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+            </span>
+            <span>
+              <strong>Midnight / Banquet Surplus Food Rescue Active:</strong> Untouched surplus food from wedding gardens, restaurants & messes picked up by Annapurna Roti Bank & volunteers within 45-60 mins.
+            </span>
+          </div>
+          <button
+            onClick={() => setActiveTab('FOOD_RESCUE')}
+            className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-lg text-xs transition-colors shrink-0 flex items-center gap-1.5 shadow-2xs"
+          >
+            <Radio className="w-3.5 h-3.5" />
+            <span>View {foodAlerts.length} Active Alerts</span>
+          </button>
+        </div>
+      </div>
+
       {/* 2. MODE SELECTOR TABS */}
       <div className="sticky top-16 z-30 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-slate-200/80 py-4 px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="max-w-[1560px] w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl border border-slate-200 self-start sm:self-auto">
+          <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl border border-slate-200 self-start sm:self-auto overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab('NGOS')}
-              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
                 activeTab === 'NGOS'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Building2 className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Nearest Old Age Homes & NGOs ({NGOS_DATA.length})</span>
+              <span>Nearest Shelters ({filteredNgos.length})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('FOOD_RESCUE')}
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+                activeTab === 'FOOD_RESCUE'
+                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Utensils className="w-3.5 h-3.5 text-slate-900" />
+              <span>🚨 Food Rescue Alerts ({foodAlerts.length})</span>
             </button>
 
             <button
               onClick={() => setActiveTab('DONATE_ITEM')}
-              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
                 activeTab === 'DONATE_ITEM'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Gift className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Community Donation Offers ({donations.length})</span>
+              <span>Surplus Offers ({donations.length})</span>
             </button>
+          </div>
+
+          <div className="flex items-center gap-2.5 text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-2xs">
+            <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+            <span className="hidden sm:inline">Radius:</span>
+            <input
+              type="range"
+              min="1"
+              max="20"
+              step="1"
+              value={radiusKm}
+              onChange={(e) => setRadiusKm(Number(e.target.value))}
+              className="accent-emerald-700 cursor-pointer w-20"
+            />
+            <span className="font-bold text-slate-900">{radiusKm} km</span>
+            <span className="text-[11px] px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold border border-emerald-200 truncate max-w-[120px]">
+              {currentLocalityInfo.name}
+            </span>
           </div>
 
           {activeTab === 'NGOS' && (
@@ -368,8 +491,8 @@ export const DonationPage: React.FC = () => {
                       )}
                     </div>
 
-                    <div className="absolute bottom-3 right-3 px-2.5 py-1 bg-white/90 backdrop-blur-md rounded text-slate-900 text-[11px] font-bold shadow-sm">
-                      {ngo.distance}
+                    <div className="absolute bottom-3 right-3 px-2.5 py-1 bg-white/90 backdrop-blur-md rounded text-emerald-800 text-[11px] font-bold shadow-sm">
+                      {getDistanceLabel(ngo.location)}
                     </div>
                   </div>
 
@@ -405,18 +528,162 @@ export const DonationPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
-                  <div className="text-xs text-slate-500">
-                    Coordinator: <span className="font-bold text-slate-800">{ngo.contactPerson}</span>
+                <div className="p-6 pt-3 border-t border-slate-100 mt-2 space-y-3">
+                  <div className="flex items-center justify-between text-xs text-slate-500">
+                    <div>
+                      Coordinator: <span className="font-bold text-slate-800">{ngo.contactPerson}</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setReviewTarget({
+                        id: ngo.id,
+                        name: ngo.name,
+                        role: 'Shelter / Old Age Home',
+                      })}
+                      className="text-slate-600 hover:text-amber-600 font-semibold flex items-center gap-1 text-[11px] transition-colors"
+                      title="Endorse this shelter"
+                    >
+                      <Star className="w-3 h-3 text-amber-500 fill-amber-400" />
+                      <span>Endorse</span>
+                    </button>
                   </div>
 
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setShareModalData({
+                        title: ngo.name,
+                        type: 'DONATION',
+                        location: ngo.location,
+                        details: ngo.urgentNeeds.join(', '),
+                      })}
+                      className="p-2.5 bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 rounded-xl transition-colors border border-slate-200 flex items-center justify-center shrink-0"
+                      title="Share Wishlist to Hostel or Society WhatsApp Group"
+                    >
+                      <Share2 className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => setSelectedNgo(ngo)}
+                      className="flex-1 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-sm"
+                    >
+                      <Heart className="w-3.5 h-3.5 fill-white" />
+                      <span>Donate to this Shelter</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 3.5. TAB: FLASH SURPLUS FOOD RESCUE ENGINE */}
+      {activeTab === 'FOOD_RESCUE' && (
+        <div className="max-w-[1560px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-10 space-y-6">
+          <div className="bg-amber-500/10 border border-amber-300 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500 text-slate-950 font-bold text-xs uppercase tracking-wider">
+                <Utensils className="w-3.5 h-3.5" />
+                <span>Zero Food Wastage Engine • Indore Clean City #1</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                Midnight & Banquet Surplus Food Rescue
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                Untouched food from wedding banquets, birthday parties, caterers, and hostel messes is safely collected and distributed to hungry night laborers, shelters, and child centers before spoilage.
+              </p>
+            </div>
+
+            <button
+              onClick={() => setIsFoodRescueModalOpen(true)}
+              className="px-6 py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center gap-2 shrink-0"
+            >
+              <Utensils className="w-4 h-4" />
+              <span>+ Report Surplus Food Now</span>
+            </button>
+          </div>
+
+          <div className="flex items-center justify-between text-xs text-slate-600">
+            <span className="font-semibold text-slate-900">
+              {foodAlerts.length} Active Food Rescue Alerts in Indore
+            </span>
+            <span className="text-amber-800 font-semibold">45-min pickup window</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {foodAlerts.map((alert) => (
+              <div
+                key={alert.id}
+                className="bg-white border-2 border-amber-200/90 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="px-2.5 py-1 bg-amber-100 text-amber-900 font-bold text-[10px] rounded-md uppercase tracking-wider flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
+                      <span>{alert.mealType}</span>
+                    </span>
+                    <span className="text-[11px] font-mono font-semibold text-slate-500">
+                      {alert.postedAt}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="font-extrabold text-base text-slate-900 leading-snug">
+                      {alert.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-amber-800 mt-1">
+                      {alert.venueName}
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-amber-50 rounded-xl border border-amber-200/70 space-y-1.5 text-xs">
+                    <div className="flex items-center gap-2 text-amber-900">
+                      <Clock className="w-3.5 h-3.5 shrink-0 text-amber-700" />
+                      <span><strong>Safe Consumption Window:</strong> {alert.safeUntil}</span>
+                    </div>
+                    <div className="text-[11px] text-slate-600">
+                      {alert.cookedTime}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs text-slate-600">
+                    <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                    <span className="truncate">{alert.location}</span>
+                    <span>•</span>
+                    <span className="font-mono text-emerald-800 font-bold shrink-0">
+                      {getDistanceLabel(alert.location)}
+                    </span>
+                  </div>
+
+                  <div className="text-xs text-slate-500 pt-1">
+                    Coordinator: <strong className="text-slate-800">{alert.contactName}</strong> ({alert.contactPhone})
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
                   <button
-                    onClick={() => setSelectedNgo(ngo)}
-                    className="px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-colors flex items-center gap-1.5 shadow-sm"
+                    type="button"
+                    onClick={() => setShareModalData({
+                      title: `${alert.quantity} at ${alert.venueName}`,
+                      type: 'FOOD_RESCUE',
+                      location: alert.location,
+                      sellerOrContact: `${alert.contactName} (${alert.contactPhone})`,
+                      details: `Safe consumption window: ${alert.safeUntil}`,
+                    })}
+                    className="p-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-xl transition-colors border border-emerald-200 flex items-center justify-center shrink-0"
+                    title="Broadcast to WhatsApp Food Volunteers"
                   >
-                    <Heart className="w-3.5 h-3.5 fill-white" />
-                    <span>Donate to this Shelter</span>
+                    <Share2 className="w-4 h-4" />
                   </button>
+
+                  <a
+                    href={`tel:${alert.contactPhone}`}
+                    className="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-xs"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>Call Coordinator</span>
+                  </a>
                 </div>
               </div>
             ))}
@@ -686,6 +953,33 @@ export const DonationPage: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* 7. FLASH FOOD RESCUE REPORT MODAL */}
+      <FoodRescueModal
+        isOpen={isFoodRescueModalOpen}
+        onClose={() => setIsFoodRescueModalOpen(false)}
+        onAlertCreated={handleFoodAlertCreated}
+      />
+
+      {/* 8. WHATSAPP COMMUNITY SHARE MODAL */}
+      {shareModalData && (
+        <WhatsAppShareModal
+          isOpen={!!shareModalData}
+          onClose={() => setShareModalData(null)}
+          data={shareModalData}
+        />
+      )}
+
+      {/* 9. COMMUNITY TRUST & ENDORSEMENT REVIEW MODAL */}
+      {reviewTarget && (
+        <ReviewModal
+          isOpen={!!reviewTarget}
+          onClose={() => setReviewTarget(null)}
+          targetId={reviewTarget.id}
+          targetName={reviewTarget.name}
+          targetRole={reviewTarget.role}
+        />
       )}
     </div>
   );

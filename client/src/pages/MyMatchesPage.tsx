@@ -257,7 +257,7 @@ export const MyMatchesPage: React.FC = () => {
 
   if (!user) {
     return (
-      <div className="bg-[#FAF9F6] min-h-screen py-16 px-4 flex items-center justify-center font-sans">
+      <div className="bg-[#F8FAFC] min-h-screen py-16 px-4 flex items-center justify-center font-sans">
         <div className="bg-white border border-slate-200 rounded-2xl p-8 max-w-md w-full shadow-md text-center space-y-5">
           <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto text-2xl font-bold">
             🎯
@@ -311,7 +311,7 @@ export const MyMatchesPage: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-10 font-sans">
+    <div className="bg-[#F8FAFC] min-h-screen py-10 font-sans">
       <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 space-y-8">
         {/* Top Breadcrumb & Switcher */}
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs border-b border-slate-200 pb-4">

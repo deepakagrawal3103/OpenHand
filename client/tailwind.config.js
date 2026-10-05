@@ -7,56 +7,72 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#F5F2EC',
+        bg: '#F8FAFC',
         surface: '#FFFFFF',
         ink: {
-          DEFAULT: '#1A1916',
-          muted: '#635F56',
-          subtle: '#8C877D',
+          DEFAULT: '#0F172A',
+          muted: '#64748B',
+          subtle: '#94A3B8',
         },
         line: {
-          DEFAULT: '#E3DED4',
-          dark: '#CBC4B5',
+          DEFAULT: '#E2E8F0',
+          dark: '#CBD5E1',
         },
         brand: {
-          DEFAULT: '#1F4D3A',
-          hover: '#173B2C',
-          light: '#EAF2ED',
+          DEFAULT: '#047857',
+          hover: '#065F46',
+          light: '#ECFDF5',
+          dark: '#064E3B',
+          accent: '#10B981',
         },
         urgent: {
-          DEFAULT: '#C2412D',
-          light: '#FBECE9',
+          DEFAULT: '#E11D48',
+          light: '#FFF1F2',
         },
         pending: {
-          DEFAULT: '#B7791F',
-          light: '#FBF4E7',
+          DEFAULT: '#D97706',
+          light: '#FFFBEB',
         },
         resolved: {
-          DEFAULT: '#3E7B4F',
-          light: '#EAF3ED',
+          DEFAULT: '#059669',
+          light: '#ECFDF5',
         },
         radar: {
-          dark: '#0F1612',
-          surface: '#15211B',
-          line: '#1E3027',
-          grid: '#23372D',
+          dark: '#0B0F12',
+          surface: '#111827',
+          line: '#1F2937',
+          grid: '#1E293B',
           emerald: '#10B981',
           accent: '#34D399',
         }
       },
       fontFamily: {
-        sans: ['Instrument Sans', 'Geist', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        serif: ['Newsreader', 'Georgia', 'Cambria', 'serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'Fira Code', 'monospace'],
       },
       borderRadius: {
-        'control': '6px',
-        'card': '10px',
+        'control': '8px',
+        'card': '16px',
+        '2xl': '20px',
+        '3xl': '24px',
       },
       boxShadow: {
-        'clean': '0 1px 3px rgba(26,25,22,0.06)',
-        'elevated': '0 4px 14px rgba(26,25,22,0.08)',
-        'modal': '0 12px 32px rgba(26,25,22,0.14)',
+        'clean': '0 1px 3px rgba(15, 23, 42, 0.05)',
+        'elevated': '0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04)',
+        'modal': '0 25px 50px -12px rgba(15, 23, 42, 0.25)',
+        'glow-emerald': '0 0 35px -5px rgba(16, 185, 129, 0.35)',
+        'glow-brand': '0 0 40px -10px rgba(4, 120, 87, 0.4)',
+      },
+      animation: {
+        'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-8px)' },
+        }
       }
     },
   },

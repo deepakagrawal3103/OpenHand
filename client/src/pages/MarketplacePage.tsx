@@ -26,7 +26,12 @@ import {
   ShieldCheck,
   Clock,
   Video,
+  Share2,
+  Star,
 } from 'lucide-react';
+import { useLocality } from '../context/LocalityContext';
+import { WhatsAppShareModal, ShareData } from '../components/ui/WhatsAppShareModal';
+import { ReviewModal } from '../components/ui/ReviewModal';
 
 export interface MarketItem {
   id: string;
@@ -255,6 +260,21 @@ const INITIAL_ITEMS: MarketItem[] = [
 export const MarketplacePage: React.FC = () => {
   const { user, switchPersona } = useAuth();
   const navigate = useNavigate();
+  const {
+    selectedLocality,
+    radiusKm,
+    setRadiusKm,
+    currentLocalityInfo,
+    getDistanceLabel,
+    isWithinRadius,
+  } = useLocality();
+
+  const [shareModalData, setShareModalData] = useState<ShareData | null>(null);
+  const [reviewTarget, setReviewTarget] = useState<{
+    id: string;
+    name: string;
+    role: string;
+  } | null>(null);
 
   const [items, setItems] = useState<MarketItem[]>(() => {
     const saved = localStorage.getItem('openhand_marketplace_items_v2');
@@ -377,15 +397,16 @@ export const MarketplacePage: React.FC = () => {
     const matchesCategory =
       selectedCategory === 'ALL' || item.category === selectedCategory;
     const matchesPrice = item.price <= maxPrice;
+    const matchesLocality = isWithinRadius(item.location);
     const matchesSearch =
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.location.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesMode && matchesCategory && matchesPrice && matchesSearch;
+    return matchesMode && matchesCategory && matchesPrice && matchesLocality && matchesSearch;
   });
 
   return (
-    <div className="bg-[#FAF9F6] text-slate-900 min-h-screen font-sans w-full">
+    <div className="bg-[#F8FAFC] text-slate-900 min-h-screen font-sans w-full">
       {/* 1. HEADER BANNER */}
       <div className="bg-white border-b border-slate-200 py-10 px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="max-w-[1560px] w-full mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -463,7 +484,7 @@ export const MarketplacePage: React.FC = () => {
       </div>
 
       {/* 3. SEARCH & CATEGORY FILTER BAR */}
-      <div className="sticky top-16 z-30 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-slate-200/80 py-4 px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="sticky top-16 z-30 bg-[#F8FAFC]/95 backdrop-blur-md border-b border-slate-200/80 py-4 px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="max-w-[1560px] w-full mx-auto flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
           {/* Search Input */}
           <div className="relative flex-1 max-w-xl">
@@ -501,6 +522,25 @@ export const MarketplacePage: React.FC = () => {
                 {cat.label}
               </button>
             ))}
+          </div>
+
+          {/* Locality Radius Slider */}
+          <div className="flex items-center gap-2.5 text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-2xs">
+            <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+            <span className="hidden sm:inline">Radius:</span>
+            <input
+              type="range"
+              min="1"
+              max="20"
+              step="1"
+              value={radiusKm}
+              onChange={(e) => setRadiusKm(Number(e.target.value))}
+              className="accent-emerald-700 cursor-pointer w-20"
+            />
+            <span className="font-bold text-slate-900">{radiusKm} km</span>
+            <span className="text-[11px] px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold border border-emerald-200 truncate max-w-[120px]">
+              {currentLocalityInfo.name}
+            </span>
           </div>
 
           {/* Price Slider */}
@@ -621,30 +661,65 @@ export const MarketplacePage: React.FC = () => {
                       <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
                       <span className="truncate">{item.location}</span>
                       <span>•</span>
-                      <span className="font-mono text-emerald-800 font-semibold shrink-0">
-                        {item.distance}
+                      <span className="font-mono text-emerald-800 font-bold shrink-0 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+                        {getDistanceLabel(item.location)}
                       </span>
                     </div>
                   </div>
                 </div>
 
                 {/* Footer Action */}
-                <div className="p-5 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
-                  <div className="text-[11px] text-slate-500">
-                    Owner: <span className="font-bold text-slate-800">{item.sellerName}</span>
+                <div className="p-4 pt-3 border-t border-slate-100 mt-2 space-y-2.5">
+                  <div className="flex items-center justify-between text-[11px] text-slate-500">
+                    <div>
+                      Owner: <span className="font-bold text-slate-800">{item.sellerName}</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setReviewTarget({
+                        id: item.id,
+                        name: item.sellerName,
+                        role: item.listingType === 'RENT' ? 'Rental Owner' : 'Seller'
+                      })}
+                      className="text-slate-600 hover:text-amber-600 font-semibold flex items-center gap-1 transition-colors"
+                      title="Rate or endorse community member"
+                    >
+                      <Star className="w-3 h-3 text-amber-500 fill-amber-400" />
+                      <span>Endorse</span>
+                    </button>
                   </div>
 
-                  <button
-                    onClick={() => setActiveItem(item)}
-                    className={`px-3.5 py-2 text-white font-semibold text-xs rounded-xl transition-colors flex items-center gap-1.5 ${
-                      item.listingType === 'RENT'
-                        ? 'bg-indigo-700 hover:bg-indigo-800'
-                        : 'bg-emerald-700 hover:bg-emerald-800'
-                    }`}
-                  >
-                    <MessageCircle className="w-3.5 h-3.5" />
-                    <span>{item.listingType === 'RENT' ? 'Rent Item' : 'Buy Item'}</span>
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setShareModalData({
+                        title: item.title,
+                        type: item.listingType === 'RENT' ? 'RENTAL' : 'MARKET_ITEM',
+                        price: item.price,
+                        rentalPeriod: item.rentalPeriod,
+                        deposit: item.securityDeposit,
+                        location: item.location,
+                        sellerOrContact: item.sellerName,
+                        details: item.description,
+                      })}
+                      className="p-2.5 bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 rounded-xl transition-colors border border-slate-200 flex items-center justify-center shrink-0"
+                      title="Share to Hostel / WhatsApp Group"
+                    >
+                      <Share2 className="w-3.5 h-3.5" />
+                    </button>
+
+                    <button
+                      onClick={() => setActiveItem(item)}
+                      className={`flex-1 py-2.5 text-white font-semibold text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-xs ${
+                        item.listingType === 'RENT'
+                          ? 'bg-indigo-700 hover:bg-indigo-800'
+                          : 'bg-emerald-700 hover:bg-emerald-800'
+                      }`}
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>{item.listingType === 'RENT' ? 'Rent Item' : 'Buy Item'}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -1055,6 +1130,26 @@ export const MarketplacePage: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* WhatsApp Group Share Modal */}
+      {shareModalData && (
+        <WhatsAppShareModal
+          isOpen={!!shareModalData}
+          onClose={() => setShareModalData(null)}
+          data={shareModalData}
+        />
+      )}
+
+      {/* Trust Endorsement Review Modal */}
+      {reviewTarget && (
+        <ReviewModal
+          isOpen={!!reviewTarget}
+          onClose={() => setReviewTarget(null)}
+          targetId={reviewTarget.id}
+          targetName={reviewTarget.name}
+          targetRole={reviewTarget.role}
+        />
       )}
     </div>
   );
