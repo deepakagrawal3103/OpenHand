@@ -263,25 +263,25 @@ export const ServicesPage: React.FC = () => {
       )}
 
       {/* 1. HEADER BANNER */}
-      <div className="bg-white border-b border-slate-200 py-6 sm:py-10 px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-[1560px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+      <div className="bg-white border-b border-slate-200 py-4 sm:py-8 px-3.5 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-[1560px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-2 sm:mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-1.5 sm:mb-3">
               <Wrench className="w-3.5 h-3.5 text-emerald-700" />
               <span>OpenHand Verified Local Services</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Find Trusted Plumbers, Electricians & Technicians
             </h1>
-            <p className="text-xs sm:text-base text-slate-600 mt-1.5 sm:mt-2 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-base text-slate-600 mt-1 sm:mt-2 max-w-3xl leading-relaxed">
               Tap leaking in hostel? Fan not spinning? PC not booting before exams? Hire verified local workers and technicians nearby with transparent visit fees and zero commission markup.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={() => setIsPostJobModalOpen(true)}
-              className="w-full sm:w-auto px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0"
+              className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0"
             >
               <Plus className="w-4 h-4 stroke-[3]" />
               <span>Post a Work Request</span>
@@ -382,19 +382,19 @@ export const ServicesPage: React.FC = () => {
 
       {/* 3. TAB 1: SERVICE PROVIDERS LIST */}
       {activeTab === 'PROVIDERS' && (
-        <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-10 space-y-6">
+        <div className="max-w-[1560px] mx-auto px-3.5 sm:px-8 lg:px-12 xl:px-16 py-6 sm:py-10 space-y-4 sm:space-y-6">
           <div className="flex items-center justify-between text-xs text-slate-600">
             <span className="font-semibold text-slate-900">
               Trusted Local Handymen & Specialists in Indore (~0.5 - 2.5 km)
             </span>
-            <span className="text-emerald-700 font-semibold">Verified ID & Phone • Direct Connect</span>
+            <span className="hidden sm:inline-block text-emerald-700 font-semibold">Verified ID & Phone • Direct Connect</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {filteredProviders.map((provider) => (
               <div
                 key={provider.id}
-                className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+                className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-3 sm:space-y-4"
               >
                 <div>
                   <div className="flex items-start justify-between gap-3">

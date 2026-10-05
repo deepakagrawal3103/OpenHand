@@ -192,12 +192,12 @@ export const LiveRadarPage: React.FC = () => {
       {/* Main Radar Viewport */}
       <div className="flex-1 flex flex-col lg:flex-row relative overflow-hidden">
         {/* Left: Canvas Interactive Radar Map */}
-        <div className="flex-1 relative min-h-[500px] flex items-center justify-center p-4">
+        <div className="flex-1 relative min-h-[300px] sm:min-h-[420px] lg:min-h-[500px] flex items-center justify-center p-2 sm:p-4">
           <canvas
             ref={canvasRef}
             width={800}
             height={560}
-            className="w-full h-full max-h-[640px] object-contain"
+            className="w-full h-full max-h-[420px] sm:max-h-[560px] lg:max-h-[640px] object-contain"
           />
 
           {/* Overlay Markers according to TRD 12.3:
@@ -273,7 +273,7 @@ export const LiveRadarPage: React.FC = () => {
         </div>
 
         {/* Right: Live Activity Stream & Node Inspector Panel */}
-        <div className="w-full lg:w-96 bg-[#121A15] border-t lg:border-t-0 lg:border-l border-[#23372D] p-5 flex flex-col justify-between space-y-6">
+        <div className="w-full lg:w-96 bg-[#121A15] border-t lg:border-t-0 lg:border-l border-[#23372D] p-3.5 sm:p-5 pb-20 lg:pb-5 flex flex-col justify-between space-y-4 sm:space-y-6">
           {/* Selected Node Details */}
           {selectedPin && (
             <div className="bg-[#17241D] border border-[#2A4436] rounded-[8px] p-4 space-y-3">

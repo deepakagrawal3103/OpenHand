@@ -408,25 +408,25 @@ export const MarketplacePage: React.FC = () => {
   return (
     <div className="bg-[#F8FAFC] text-slate-900 min-h-screen font-sans w-full">
       {/* 1. HEADER BANNER */}
-      <div className="bg-white border-b border-slate-200 py-6 sm:py-10 px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-[1560px] w-full mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+      <div className="bg-white border-b border-slate-200 py-4 sm:py-8 px-3.5 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-[1560px] w-full mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-2 sm:mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-1.5 sm:mb-3">
               <ShoppingBag className="w-3.5 h-3.5 text-emerald-700" />
               <span>OpenHand Community Marketplace & Rental Hub</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Buy, Sell & Rent Pre-Owned Gear
             </h1>
-            <p className="text-xs sm:text-base text-slate-600 mt-1.5 sm:mt-2 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-base text-slate-600 mt-1 sm:mt-2 max-w-3xl leading-relaxed">
               Buy or sell used books, calculators, and cycles—or <strong>rent uncommon equipment</strong> like <strong>wheelchairs, walkers, medical gear, rotary drills, and projectors</strong> from neighbours for a few days at nominal rates.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={handleOpenListModal}
-              className="w-full sm:w-auto px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0"
+              className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0"
             >
               <Plus className="w-4 h-4 stroke-[3]" />
               <span>+ List for Sale or Rent</span>
@@ -565,16 +565,16 @@ export const MarketplacePage: React.FC = () => {
       </div>
 
       {/* 4. LISTINGS GRID */}
-      <div className="max-w-[1560px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-10">
-        <div className="flex items-center justify-between mb-6 text-xs text-slate-600">
+      <div className="max-w-[1560px] w-full mx-auto px-3.5 sm:px-8 lg:px-12 xl:px-16 py-6 sm:py-10">
+        <div className="flex items-center justify-between mb-4 sm:mb-6 text-xs text-slate-600">
           <span className="font-semibold text-slate-900">
             Showing {filteredItems.length} {modeFilter === 'RENT' ? 'rental' : modeFilter === 'SALE' ? 'for-sale' : 'active'} items in Indore
           </span>
-          <span className="text-slate-500">Zero commission • Direct neighbourhood handoff</span>
+          <span className="hidden sm:inline-block text-slate-500">Zero commission • Direct neighbourhood handoff</span>
         </div>
 
         {filteredItems.length === 0 ? (
-          <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center max-w-md mx-auto my-12 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-2xl p-8 sm:p-12 text-center max-w-md mx-auto my-8 sm:my-12 space-y-4">
             <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-500 mx-auto flex items-center justify-center font-bold">
               ?
             </div>
@@ -595,7 +595,7 @@ export const MarketplacePage: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {filteredItems.map((item) => (
               <div
                 key={item.id}
@@ -611,26 +611,26 @@ export const MarketplacePage: React.FC = () => {
                     />
 
                     {/* Top Badges */}
-                    <div className="absolute top-3 left-3 flex flex-wrap items-center gap-1.5">
+                    <div className="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 flex flex-wrap items-center gap-1.5">
                       {item.listingType === 'RENT' ? (
-                        <span className="px-2.5 py-1 bg-indigo-900/90 backdrop-blur-md rounded-md text-[10px] font-mono text-white font-bold uppercase tracking-wider flex items-center gap-1 shadow-sm">
+                        <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-indigo-900/90 backdrop-blur-md rounded-md text-[10px] font-mono text-white font-bold uppercase tracking-wider flex items-center gap-1 shadow-sm">
                           <Repeat className="w-3 h-3 text-indigo-300" />
                           <span>FOR RENT</span>
                         </span>
                       ) : (
-                        <span className="px-2.5 py-1 bg-emerald-900/90 backdrop-blur-md rounded-md text-[10px] font-mono text-white font-bold uppercase tracking-wider flex items-center gap-1 shadow-sm">
+                        <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-emerald-900/90 backdrop-blur-md rounded-md text-[10px] font-mono text-white font-bold uppercase tracking-wider flex items-center gap-1 shadow-sm">
                           <Tag className="w-3 h-3 text-emerald-300" />
                           <span>FOR SALE</span>
                         </span>
                       )}
 
-                      <span className="px-2 py-0.5 bg-black/60 backdrop-blur-md text-white rounded text-[10px] font-bold">
+                      <span className="px-1.5 sm:px-2 py-0.5 bg-black/60 backdrop-blur-md text-white rounded text-[10px] font-bold">
                         {item.condition}
                       </span>
                     </div>
 
                     {/* Price Pill */}
-                    <div className={`absolute bottom-3 right-3 px-2.5 py-1 backdrop-blur-md rounded-lg text-white font-black text-sm shadow-sm ${
+                    <div className={`absolute bottom-2.5 sm:bottom-3 right-2.5 sm:right-3 px-2 sm:px-2.5 py-0.5 sm:py-1 backdrop-blur-md rounded-lg text-white font-black text-xs sm:text-sm shadow-sm ${
                       item.listingType === 'RENT' ? 'bg-indigo-900/95' : 'bg-emerald-900/95'
                     }`}>
                       {item.listingType === 'RENT' ? (
@@ -642,7 +642,7 @@ export const MarketplacePage: React.FC = () => {
                   </div>
 
                   {/* Body Details */}
-                  <div className="p-5 space-y-2.5">
+                  <div className="p-3.5 sm:p-5 space-y-2 sm:space-y-2.5">
                     <div className="flex items-start justify-between gap-2">
                       <h3 className="font-bold text-base text-slate-900 leading-snug line-clamp-2">
                         {item.title}

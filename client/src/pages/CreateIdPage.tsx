@@ -154,18 +154,18 @@ export const CreateIdPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F8FAFC] min-h-screen py-10 px-4 sm:px-6 lg:px-8 font-sans selection:bg-emerald-100 selection:text-emerald-900">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <div className="bg-[#F8FAFC] min-h-screen py-6 sm:py-10 px-3.5 sm:px-6 lg:px-8 font-sans selection:bg-emerald-100 selection:text-emerald-900">
+      <div className="max-w-6xl mx-auto space-y-5 sm:space-y-8">
         {/* Header */}
-        <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold shadow-2xs">
+        <div className="text-center space-y-2 sm:space-y-3 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
             <span>Indore Civic Directory & Direct WhatsApp Notifications</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-5xl font-black text-slate-900 tracking-tight">
             Create Your Indore Civic ID
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="text-xs sm:text-base text-slate-600 leading-relaxed">
             Register as a <strong>Verified NGO/Shelter</strong> or a <strong>Skilled Technician</strong>.
             We match incoming donation items or repair orders and ping your phone directly on{' '}
             <strong className="text-emerald-800">WhatsApp</strong> in real-time.
@@ -173,18 +173,18 @@ export const CreateIdPage: React.FC = () => {
         </div>
 
         {/* Quick Demo Pre-fill Bar */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2.5 text-slate-700 font-medium">
-            <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+        <div className="bg-white border border-slate-200 rounded-2xl p-3 sm:p-4 shadow-sm flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs">
+          <div className="flex items-center gap-2 sm:gap-2.5 text-slate-700 font-medium">
+            <div className="w-6 sm:w-7 h-6 sm:h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
               ⚡
             </div>
             <span><strong>1-Click Indore Pre-fills:</strong> Test instantaneous matching without typing</span>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <button
               type="button"
               onClick={() => handleQuickDemoFill('NGO')}
-              className="px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-bold border border-emerald-200 rounded-xl transition-all shadow-2xs flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-bold border border-emerald-200 rounded-xl transition-all shadow-2xs flex items-center gap-1 text-[11px] sm:text-xs"
             >
               <Building2 className="w-3.5 h-3.5 text-emerald-700" />
               <span>Aastha Vriddhashram (NGO)</span>
@@ -192,7 +192,7 @@ export const CreateIdPage: React.FC = () => {
             <button
               type="button"
               onClick={() => handleQuickDemoFill('ELECTRICIAN')}
-              className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-900 font-bold border border-blue-200 rounded-xl transition-all shadow-2xs flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-900 font-bold border border-blue-200 rounded-xl transition-all shadow-2xs flex items-center gap-1 text-[11px] sm:text-xs"
             >
               <Zap className="w-3.5 h-3.5 text-blue-700" />
               <span>Vikram Sharma (Electrician)</span>
@@ -200,7 +200,7 @@ export const CreateIdPage: React.FC = () => {
             <button
               type="button"
               onClick={() => handleQuickDemoFill('PLUMBER')}
-              className="px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold border border-amber-200 rounded-xl transition-all shadow-2xs flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold border border-amber-200 rounded-xl transition-all shadow-2xs flex items-center gap-1 text-[11px] sm:text-xs"
             >
               <Wrench className="w-3.5 h-3.5 text-amber-700" />
               <span>Rameshwar (Plumber)</span>
@@ -209,9 +209,9 @@ export const CreateIdPage: React.FC = () => {
         </div>
 
         {/* 2-Column Suite: Left Form + Right Live Holographic ID Preview */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-start">
           {/* Left Form: 7 cols */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-4 sm:p-8 shadow-sm space-y-4 sm:space-y-6">
             {error && (
               <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-xs font-semibold text-rose-700">
                 {error}

@@ -139,10 +139,10 @@ export const CreateWizardPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#F5F2EC] min-h-screen py-10">
-      <div className="max-w-3xl mx-auto px-4">
+    <div className="bg-[#F5F2EC] min-h-screen py-5 sm:py-10 px-3.5 sm:px-4">
+      <div className="max-w-3xl mx-auto">
         {/* Wizard Stepper Header */}
-        <div className="mb-8">
+        <div className="mb-5 sm:mb-8">
           <div className="flex items-center justify-between text-xs font-mono text-ink-muted mb-2">
             <span>STEP {step} OF 5</span>
             <span className="font-semibold text-brand">
@@ -164,7 +164,7 @@ export const CreateWizardPage: React.FC = () => {
 
         {/* STEP 1: TYPE SELECTION */}
         {step === 1 && (
-          <div className="bg-surface border border-line rounded-[10px] p-6 shadow-clean space-y-6">
+          <div className="bg-surface border border-line rounded-[10px] p-4 sm:p-6 shadow-clean space-y-4 sm:space-y-6">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted">
                 STEP 1: WHAT DO YOU NEED?
@@ -285,7 +285,7 @@ export const CreateWizardPage: React.FC = () => {
 
         {/* STEP 2: DETAILS & NATURAL LANGUAGE AI PARSING */}
         {step === 2 && (
-          <div className="bg-surface border border-line rounded-[10px] p-6 shadow-clean space-y-6">
+          <div className="bg-surface border border-line rounded-[10px] p-4 sm:p-6 shadow-clean space-y-4 sm:space-y-6">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted">
                 STEP 2: REQUEST DETAILS
@@ -410,7 +410,7 @@ export const CreateWizardPage: React.FC = () => {
 
         {/* STEP 3: LOCATION SELECTION */}
         {step === 3 && (
-          <div className="bg-surface border border-line rounded-[10px] p-6 shadow-clean space-y-6">
+          <div className="bg-surface border border-line rounded-[10px] p-4 sm:p-6 shadow-clean space-y-4 sm:space-y-6">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted">
                 STEP 3: PICKUP / ISSUE LOCATION
@@ -491,7 +491,7 @@ export const CreateWizardPage: React.FC = () => {
 
         {/* STEP 4: EDITABLE REVIEW */}
         {step === 4 && (
-          <div className="bg-surface border border-line rounded-[10px] p-6 shadow-clean space-y-6">
+          <div className="bg-surface border border-line rounded-[10px] p-4 sm:p-6 shadow-clean space-y-4 sm:space-y-6">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-brand" />
@@ -604,7 +604,7 @@ export const CreateWizardPage: React.FC = () => {
 
         {/* STEP 5: SUCCESS & NOTIFICATION */}
         {step === 5 && (
-          <div className="bg-surface border border-line rounded-[10px] p-8 shadow-clean text-center space-y-6">
+          <div className="bg-surface border border-line rounded-[10px] p-4 sm:p-8 shadow-clean text-center space-y-4 sm:space-y-6">
             <div className="w-16 h-16 rounded-full bg-emerald-100 text-brand mx-auto flex items-center justify-center animate-bounce">
               <CheckCircle2 className="w-9 h-9 text-brand" />
             </div>
