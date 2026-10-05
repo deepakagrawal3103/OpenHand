@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
           </div>
           <div className="flex items-center gap-1.5">
             <Code className="w-4 h-4 text-emerald-400" />
-            <span>Open Source Mesh</span>
+            <span>Open Source Community</span>
           </div>
           <div className="flex items-center gap-1.5">
             <MapPin className="w-4 h-4 text-emerald-400" />
@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
             </div>
             <span>OpenHand</span>
           </div>
-          <span className="font-mono text-white/50">v2.4 • Indore Mesh Node Network</span>
+          <span className="font-mono text-white/50">Indore Hyperlocal Community Network</span>
         </div>
 
         <div className="flex flex-wrap items-center gap-6">
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="font-mono text-white/50">
-          © 2026 OpenHand Civic Protocol.
+          © 2026 OpenHand Community Platform.
         </div>
       </div>
     </footer>

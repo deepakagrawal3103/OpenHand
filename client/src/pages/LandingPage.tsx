@@ -72,7 +72,7 @@ export const LandingPage: React.FC = () => {
           {/* Live Network Beacon Pill */}
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-[11px] sm:text-xs font-semibold text-emerald-300 mb-6 sm:mb-8 shadow-[0_0_25px_rgba(16,185,129,0.2)] animate-in fade-in slide-in-from-top-4 duration-700">
             <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_#34d399]" />
-            <span className="truncate max-w-[280px] xs:max-w-none">Indore Hyperlocal Mesh • 1,840+ Nodes • 0% Fee</span>
+            <span className="truncate max-w-[280px] xs:max-w-none">Indore Hyperlocal Network • 1,840+ Verified Residents • 0% Fee</span>
           </div>
 
           {/* Editorial Display Headline */}
@@ -557,7 +557,7 @@ export const LandingPage: React.FC = () => {
                 Verified Shelters, Technicians & Campus Deals
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                Active community nodes operating daily across Indore.
+                Active neighbors, volunteers & workers operating daily across Indore.
               </p>
             </div>
             <div className="flex items-center gap-3">

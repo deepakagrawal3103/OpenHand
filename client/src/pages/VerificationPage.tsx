@@ -123,7 +123,7 @@ export const VerificationPage: React.FC = () => {
                 Verified Resolution Recorded
               </h2>
               <p className="text-xs text-ink-muted max-w-md mx-auto">
-                The canonical Lab 3 lifecycle is now complete! Helper Aarav Patel has received +25 trust points.
+                The request is now complete! Helper Aarav Patel has been credited with positive community rating.
               </p>
             </div>
 

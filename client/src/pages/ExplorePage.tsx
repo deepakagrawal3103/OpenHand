@@ -63,7 +63,7 @@ export const ExplorePage: React.FC = () => {
               Explore Indore Requests
             </h1>
             <p className="text-xs sm:text-sm text-ink-muted mt-0.5">
-              Live broadcasted community blockers, surplus tools, and assistance requests within your mesh range.
+              Live community needs, surplus items, and assistance requests across Indore.
             </p>
           </div>
 

@@ -123,7 +123,7 @@ export const HelperTaskPage: React.FC = () => {
         {/* Lifecycle Tracker */}
         <Timeline status={task.status} />
 
-        {/* The Canonical ONE NEXT-ACTION BUTTON Banner */}
+        {/* Primary Action Banner */}
         <div className="bg-surface border-2 border-brand rounded-[10px] p-6 shadow-clean space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-line">
             <div>

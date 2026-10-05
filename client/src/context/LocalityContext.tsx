@@ -14,7 +14,7 @@ export const INDORE_LOCALITIES: IndoreLocality[] = [
     id: 'ALL',
     name: 'All Indore',
     hindiName: 'सम्पूर्ण इंदौर',
-    landmark: 'Citywide Mesh Network',
+    landmark: 'All Indore Localities',
     lat: 22.7196,
     lng: 75.8577,
   },

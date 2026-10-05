@@ -122,7 +122,7 @@ export const HelperProofUploadPage: React.FC = () => {
               className="text-brand font-semibold hover:underline flex items-center gap-1"
             >
               <Sparkles className="w-3.5 h-3.5 text-brand" />
-              Reset Canonical Lab 3 Proof
+              Load Demo Proof Photos (Lab 3)
             </button>
           </div>
 

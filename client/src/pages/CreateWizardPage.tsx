@@ -146,11 +146,11 @@ export const CreateWizardPage: React.FC = () => {
           <div className="flex items-center justify-between text-xs font-mono text-ink-muted mb-2">
             <span>STEP {step} OF 5</span>
             <span className="font-semibold text-brand">
-              {step === 1 && 'Select Archetype'}
+              {step === 1 && 'Select Request Type'}
               {step === 2 && 'Describe in Plain Language'}
               {step === 3 && 'Pin Location'}
-              {step === 4 && 'AI Understanding Review'}
-              {step === 5 && 'Routing & Matching'}
+              {step === 4 && 'Review & Categorization'}
+              {step === 5 && 'Connecting Nearby Helpers'}
             </span>
           </div>
 
@@ -167,13 +167,13 @@ export const CreateWizardPage: React.FC = () => {
           <div className="bg-surface border border-line rounded-[10px] p-6 shadow-clean space-y-6">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted">
-                STEP 1: REQUEST ARCHETYPE
+                STEP 1: WHAT DO YOU NEED?
               </div>
               <h2 className="text-xl font-bold text-ink">
-                What are you bringing to the mesh?
+                What kind of help or request is this?
               </h2>
               <p className="text-xs text-ink-muted mt-1">
-                Select one of the four structured contracts to guide routing.
+                Choose the best category so we can connect you with the right neighbors.
               </p>
             </div>
 
@@ -288,13 +288,13 @@ export const CreateWizardPage: React.FC = () => {
           <div className="bg-surface border border-line rounded-[10px] p-6 shadow-clean space-y-6">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted">
-                STEP 2: NATURAL LANGUAGE DISPATCH
+                STEP 2: REQUEST DETAILS
               </div>
               <h2 className="text-xl font-bold text-ink">
-                Describe the problem in ordinary words
+                Describe what happened in plain words
               </h2>
               <p className="text-xs text-ink-muted mt-1">
-                OpenHand AI converts your message into structured engineering categories, urgency ratings, and affected counts.
+                OpenHand automatically suggests the best category and urgency level to alert nearby responders.
               </p>
             </div>
 
@@ -324,9 +324,9 @@ export const CreateWizardPage: React.FC = () => {
               />
             </div>
 
-            {/* Canonical Demo Scenario Auto-Fill Button */}
+            {/* Demo Scenario Auto-Fill Button */}
             <div className="flex items-center justify-between text-xs font-mono bg-[#FAF8F5] p-3 rounded-[6px] border border-line">
-              <span className="text-ink-muted">Need a fast demo scenario?</span>
+              <span className="text-ink-muted">Want to try a demo case?</span>
               <button
                 type="button"
                 onClick={() => {
@@ -337,7 +337,7 @@ export const CreateWizardPage: React.FC = () => {
                 className="text-brand font-semibold hover:underline flex items-center gap-1"
               >
                 <Sparkles className="w-3.5 h-3.5 text-brand" />
-                Fill Canonical "Lab 3" Case
+                Fill Demo Case (Lab 3 PCs)
               </button>
             </div>
 
@@ -346,7 +346,7 @@ export const CreateWizardPage: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="px-1.5 py-0.5 bg-brand text-white font-mono text-[9px] uppercase rounded-[3px] font-bold">
-                    AI AGENT
+                    SMART TRIAGE
                   </span>
                   <span className="text-xs font-bold text-brand">
                     Live Extracted Triage Preview
@@ -413,13 +413,13 @@ export const CreateWizardPage: React.FC = () => {
           <div className="bg-surface border border-line rounded-[10px] p-6 shadow-clean space-y-6">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted">
-                STEP 3: MESH COORDINATES
+                STEP 3: PICKUP / ISSUE LOCATION
               </div>
               <h2 className="text-xl font-bold text-ink">
-                Pin Location in Indore
+                Where in Indore is this located?
               </h2>
               <p className="text-xs text-ink-muted mt-1">
-                Helpers will be matched using hyper-local proximity (~800m target radius).
+                Helpers will be alerted based on proximity in your locality (~1-2 km radius).
               </p>
             </div>
 
@@ -482,26 +482,26 @@ export const CreateWizardPage: React.FC = () => {
                 onClick={() => setStep(4)}
                 className="px-6 py-2.5 text-xs font-semibold text-white bg-brand hover:bg-brand-hover rounded-[6px] flex items-center gap-2"
               >
-                <span>Continue to AI Review</span>
+                <span>Continue to Review</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
         )}
 
-        {/* STEP 4: EDITABLE AI UNDERSTANDING REVIEW */}
+        {/* STEP 4: EDITABLE REVIEW */}
         {step === 4 && (
           <div className="bg-surface border border-line rounded-[10px] p-6 shadow-clean space-y-6">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-brand" />
-                <span>STEP 4: AI UNDERSTANDING BLOCK (EDITABLE)</span>
+                <span>STEP 4: VERIFY DETAILS BEFORE PUBLISHING</span>
               </div>
               <h2 className="text-xl font-bold text-ink">
-                Review & Confirm Triage Parameters
+                Review & Confirm Details
               </h2>
               <p className="text-xs text-ink-muted mt-1">
-                PRD Rule: AI output never silently overrides your control. You may edit any field before broadcast.
+                Please review the details below. You can change any field before your request is posted.
               </p>
             </div>
 
@@ -556,7 +556,7 @@ export const CreateWizardPage: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-mono font-medium text-ink-muted uppercase mb-1">
-                  AI Generated Summary (Shown to Responders)
+                  Summary (Shown to Responders)
                 </label>
                 <input
                   type="text"
@@ -602,7 +602,7 @@ export const CreateWizardPage: React.FC = () => {
           </div>
         )}
 
-        {/* STEP 5: SUCCESS & ROUTING RADAR */}
+        {/* STEP 5: SUCCESS & NOTIFICATION */}
         {step === 5 && (
           <div className="bg-surface border border-line rounded-[10px] p-8 shadow-clean text-center space-y-6">
             <div className="w-16 h-16 rounded-full bg-emerald-100 text-brand mx-auto flex items-center justify-center animate-bounce">
@@ -611,27 +611,27 @@ export const CreateWizardPage: React.FC = () => {
 
             <div>
               <div className="text-xs font-mono font-bold uppercase tracking-wider text-brand">
-                DISPATCH SIGNAL BROADCASTED
+                REQUEST PUBLISHED SUCCESSFULLY
               </div>
               <h2 className="text-2xl font-bold text-ink mt-1">
-                Request Live in Indore Mesh
+                Your Request is Live in Indore!
               </h2>
               <p className="text-xs text-ink-muted mt-1 max-w-md mx-auto">
-                Reading parameters → Searching nearby helpers within ~800m → Matching candidate nodes...
+                Notifying nearby volunteers, students & technicians in your area...
               </p>
             </div>
 
-            {/* Radar scan animation block */}
+            {/* Notification alert block */}
             <div className="bg-[#121A15] text-emerald-400 p-4 rounded-[8px] font-mono text-xs border border-[#23372D] max-w-md mx-auto space-y-1.5 text-left">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <span>Scanning 42 active volunteer nodes...</span>
+                <span>Alerting nearby verified helpers in your locality...</span>
               </div>
               <div className="text-emerald-300/80">
-                Found high-match candidate: Aarav Patel (0.8 km, 92% Match Score)
+                Matched nearby volunteer: Aarav Patel (0.8 km away)
               </div>
               <div className="text-emerald-300/60 text-[10px]">
-                Coordinates: {lat.toFixed(4)} N, {lng.toFixed(4)} E
+                Location: {locationText || 'Indore'}
               </div>
             </div>
 

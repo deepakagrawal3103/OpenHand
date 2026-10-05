@@ -112,7 +112,7 @@ export const TaskChatPage: React.FC = () => {
 
           <div className="text-xs font-mono text-brand flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            <span>Encrypted Mesh</span>
+            <span>Direct Chat</span>
           </div>
         </div>
 
@@ -151,7 +151,7 @@ export const TaskChatPage: React.FC = () => {
           {messages.length === 0 ? (
             <div className="text-center py-12 text-ink-muted font-mono text-xs">
               <MessageSquare className="w-8 h-8 mx-auto mb-2 opacity-40 text-brand" />
-              <span>Direct mesh channel opened. Send ETA or coordinate tools below.</span>
+              <span>Direct chat opened. Send ETA or coordinate with your neighbor below.</span>
             </div>
           ) : (
             messages.map((m) => {

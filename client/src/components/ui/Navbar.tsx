@@ -74,7 +74,7 @@ export const Navbar: React.FC = () => {
               </span>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200/60">
-                  Indore Mesh
+                  Indore Community
                 </span>
                 <span className="hidden sm:inline-block text-[10px] text-slate-400 font-medium">
                   • 0% fee
@@ -221,7 +221,7 @@ export const Navbar: React.FC = () => {
             {demoOpen && (
               <div className="absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-xl p-2 z-50 text-xs animate-in fade-in zoom-in-95 duration-100">
                 <div className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold border-b border-slate-100 mb-1">
-                  SWITCH CANONICAL DEMO PERSONA
+                  SWITCH DEMO PROFILE
                 </div>
                 <button
                   type="button"
@@ -297,7 +297,7 @@ export const Navbar: React.FC = () => {
                     <div className="text-[11px] text-slate-500 truncate">{user.email}</div>
                     <div className="pt-1 flex items-center gap-1.5 text-[10px] text-emerald-700 font-semibold bg-emerald-50/70 p-1.5 rounded-lg border border-emerald-100">
                       <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>{user.city} Civic Mesh • Trust {user.trustScore}%</span>
+                      <span>{user.city} Resident • Verified Member</span>
                     </div>
                   </div>
 

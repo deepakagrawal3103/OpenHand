@@ -75,7 +75,7 @@ export const LoginPage: React.FC = () => {
                   OpenHand
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-300 font-semibold mt-0.5">
-                  Indore Civic Mesh
+                  Indore Civic Network
                 </span>
               </div>
             </Link>
@@ -83,7 +83,7 @@ export const LoginPage: React.FC = () => {
             <div className="pt-6 space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-800/60 border border-emerald-600/50 text-[11px] font-medium text-emerald-200">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Zero Brokerage • Direct Peer Mesh</span>
+                <span>Zero Brokerage • Direct Community Network</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
                 Where Indore neighbors help in 45 minutes.
@@ -130,7 +130,7 @@ export const LoginPage: React.FC = () => {
           {/* Bottom Trust Badge */}
           <div className="relative z-10 pt-4 border-t border-white/10 flex items-center gap-2 text-[11px] text-emerald-200/70">
             <Shield className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Indore Hyperlocal Mesh • Safe, encrypted & zero ads</span>
+            <span>Indore Hyperlocal Network • Safe, trusted & zero ads</span>
           </div>
         </div>
 

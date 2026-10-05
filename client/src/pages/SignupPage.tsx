@@ -103,7 +103,7 @@ export const SignupPage: React.FC = () => {
           {/* Bottom Security */}
           <div className="relative z-10 pt-4 border-t border-white/10 flex items-center gap-2 text-[11px] text-emerald-200/70">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Campus & neighborhood mesh • 100% Free forever</span>
+            <span>Campus & neighborhood community • 100% Free forever</span>
           </div>
         </div>
 

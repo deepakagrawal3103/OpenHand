@@ -146,7 +146,7 @@ export const OnboardingSkillsPage: React.FC = () => {
             onClick={handleComplete}
             className="px-6 py-2.5 text-xs font-bold text-white bg-brand hover:bg-brand-hover rounded-[6px] shadow-sm flex items-center gap-2"
           >
-            <span>Finish & Open Mesh Dashboard</span>
+            <span>Finish & Open Community Dashboard</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

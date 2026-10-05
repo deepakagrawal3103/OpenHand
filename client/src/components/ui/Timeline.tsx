@@ -33,7 +33,7 @@ export const Timeline: React.FC<TimelineProps> = ({ status }) => {
   return (
     <div className="bg-surface border border-line rounded-[10px] p-5 shadow-clean">
       <h4 className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-4">
-        Task State Progression (Canonical Workflow)
+        Request & Task Progress Timeline
       </h4>
 
       <div className="relative flex items-center justify-between">

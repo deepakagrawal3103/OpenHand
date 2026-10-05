@@ -66,7 +66,7 @@ export const MyMatchesPage: React.FC = () => {
     }
   }, [user]);
 
-  // Generate canonical matched items based on logged in user's profile
+  // Generate matched opportunities based on logged in user's profile
   useEffect(() => {
     setLoading(true);
 

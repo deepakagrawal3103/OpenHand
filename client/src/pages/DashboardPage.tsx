@@ -46,13 +46,13 @@ export const DashboardPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-line">
           <div>
             <div className="text-[11px] font-mono uppercase tracking-wider text-ink-muted">
-              USER COCKPIT • INDORE REGION
+              COMMUNITY DASHBOARD • INDORE
             </div>
             <h1 className="text-2xl font-bold text-ink">
               Welcome back, {user?.name || 'Citizen'}
             </h1>
             <p className="text-xs text-ink-muted font-mono mt-0.5">
-              Campus Node • Trust Score: {user?.trustScore || 92}% • Active in SGSITS Mesh
+              Verified Resident • SGSITS & Indore Community
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export const DashboardPage: React.FC = () => {
               className="px-4 py-2 text-xs font-bold text-white bg-brand hover:bg-brand-hover rounded-[6px] shadow-sm flex items-center gap-1.5"
             >
               <Plus className="w-3.5 h-3.5" />
-              <span>Broadcast Request</span>
+              <span>Post Request</span>
             </Link>
 
             <Link
@@ -75,12 +75,12 @@ export const DashboardPage: React.FC = () => {
           </div>
         </div>
 
-        {/* AI Recommendations from PRD Section 10 */}
+        {/* Local Recommendations */}
         <div className="bg-surface border border-brand/30 rounded-[10px] p-5 shadow-clean space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="px-1.5 py-0.5 bg-brand text-white font-mono text-[9px] uppercase font-bold rounded">
-                AI MATCH RECOMMENDATIONS
+                RECOMMENDED FOR YOU
               </span>
               <h3 className="text-sm font-bold text-ink">
                 Priority Local Interventions
@@ -139,7 +139,7 @@ export const DashboardPage: React.FC = () => {
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-ink flex items-center gap-2">
               <Clock className="w-4 h-4 text-brand" />
-              <span>Your Broadcasted & Monitored Requests</span>
+              <span>Your Active Requests & Listings</span>
             </h3>
             <Link to="/explore" className="text-xs font-mono text-brand hover:underline">
               View all explore feed →

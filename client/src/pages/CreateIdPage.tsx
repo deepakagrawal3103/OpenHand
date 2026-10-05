@@ -160,7 +160,7 @@ export const CreateIdPage: React.FC = () => {
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>OpenHand Civic ID Engine & Real-Time Match Radar</span>
+            <span>Indore Civic Directory & Direct WhatsApp Notifications</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
             Create Your Indore Civic ID
@@ -581,12 +581,12 @@ export const CreateIdPage: React.FC = () => {
                   <div>
                     <div className="font-extrabold text-sm tracking-tight text-white">OPENHAND CIVIC ID</div>
                     <div className="text-[9px] font-mono text-emerald-400 uppercase tracking-widest font-semibold">
-                      Indore Mesh Verified
+                      Indore Verified Member
                     </div>
                   </div>
                 </div>
                 <div className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-[10px] font-mono font-bold text-emerald-300">
-                  TIER 1
+                  VERIFIED
                 </div>
               </div>
 
@@ -644,7 +644,7 @@ export const CreateIdPage: React.FC = () => {
                 {whatsappNotifications && (
                   <div className="pt-2 flex items-center justify-between text-[11px] text-emerald-300 bg-emerald-950/60 p-2.5 rounded-xl border border-emerald-500/30">
                     <div className="flex items-center gap-1.5 font-medium">
-                      <span>📲 WhatsApp Radar:</span>
+                      <span>📲 WhatsApp Alert:</span>
                       <span className="font-mono">{whatsappNumber}</span>
                     </div>
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -652,11 +652,11 @@ export const CreateIdPage: React.FC = () => {
                 )}
               </div>
 
-              {/* Card Footer: Hologram simulation */}
-              <div className="relative z-10 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Trust Score: 94%</span>
+              {/* Card Footer: Identity verification badge */}
+              <div className="relative z-10 pt-3 border-white/10 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                <div className="flex items-center gap-1.5 text-emerald-400">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Civic Verified</span>
                 </div>
                 <span>ID: OH-{Math.abs(locality.length * 8274).toString().padStart(6, '0')}</span>
               </div>

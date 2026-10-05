@@ -46,7 +46,7 @@ export const OnboardingRolePage: React.FC = () => {
             How do you plan to use OpenHand?
           </h1>
           <p className="text-xs text-ink-muted mt-1">
-            Choose your primary intention in the Indore mesh network. You can change this at any time.
+            Choose your primary goal in the Indore community. You can change this at any time.
           </p>
         </div>
 
