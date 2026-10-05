@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { LocalityProvider } from './context/LocalityContext';
 import { Navbar } from './components/ui/Navbar';
+import { MobileBottomNav } from './components/ui/MobileBottomNav';
 import { Footer } from './components/ui/Footer';
 
 // Pages
@@ -36,7 +37,7 @@ export function App() {
         <LocalityProvider>
           <div className="flex flex-col min-h-screen bg-[#F5F2EC] text-[#1A1916]">
             <Navbar />
-            <main className="flex-1">
+            <main className="flex-1 pb-20 md:pb-0">
               <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<LandingPage />} />
@@ -78,6 +79,7 @@ export function App() {
               </Routes>
             </main>
             <Footer />
+            <MobileBottomNav />
           </div>
         </LocalityProvider>
       </AuthProvider>

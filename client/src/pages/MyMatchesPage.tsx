@@ -314,7 +314,7 @@ export const MyMatchesPage: React.FC = () => {
     <div className="bg-[#F8FAFC] min-h-screen py-10 font-sans">
       <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 space-y-8">
         {/* Top Breadcrumb & Switcher */}
-        <div className="flex flex-wrap items-center justify-between gap-3 text-xs border-b border-slate-200 pb-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs border-b border-slate-200 pb-4">
           <div className="flex items-center gap-2 text-slate-500 font-medium">
             <Link to="/" className="hover:text-emerald-800">
               Home
@@ -323,31 +323,31 @@ export const MyMatchesPage: React.FC = () => {
             <span className="text-slate-900 font-bold">Personalized Feed</span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-slate-500">Quick Test Personas:</span>
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <span className="text-slate-500 hidden sm:inline">Test Personas:</span>
             <button
               onClick={() => switchPersona('priya')}
-              className="px-2.5 py-1 bg-white hover:bg-slate-100 border border-slate-300 rounded font-semibold text-slate-700 transition-colors"
+              className="px-2.5 py-1 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg font-semibold text-slate-700 transition-colors"
             >
               Priya (Requester)
             </button>
             <button
               onClick={() => switchPersona('aarav')}
-              className="px-2.5 py-1 bg-white hover:bg-slate-100 border border-slate-300 rounded font-semibold text-slate-700 transition-colors"
+              className="px-2.5 py-1 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg font-semibold text-slate-700 transition-colors"
             >
-              Aarav (Tech Helper)
+              Aarav (Helper)
             </button>
             <Link
               to="/create-id"
-              className="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded font-bold transition-colors"
+              className="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg font-bold transition-colors whitespace-nowrap"
             >
-              + Create New ID
+              + Create ID
             </Link>
           </div>
         </div>
 
         {/* 1. CIVIC ID CARD HEADER */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <div className="bg-white border-slate-200 rounded-2xl p-4 sm:p-8 shadow-sm">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-start gap-4">
               <div className="w-14 h-14 rounded-2xl bg-emerald-100 border border-emerald-200 text-emerald-800 flex items-center justify-center font-bold text-2xl shrink-0">

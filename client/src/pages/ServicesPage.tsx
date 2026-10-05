@@ -263,25 +263,25 @@ export const ServicesPage: React.FC = () => {
       )}
 
       {/* 1. HEADER BANNER */}
-      <div className="bg-white border-b border-slate-200 py-10 px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-[1560px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-white border-b border-slate-200 py-6 sm:py-10 px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-[1560px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-2 sm:mb-3">
               <Wrench className="w-3.5 h-3.5 text-emerald-700" />
               <span>OpenHand Verified Local Services</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Find Trusted Plumbers, Electricians & Technicians
             </h1>
-            <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-3xl">
+            <p className="text-xs sm:text-base text-slate-600 mt-1.5 sm:mt-2 max-w-3xl leading-relaxed">
               Tap leaking in hostel? Fan not spinning? PC not booting before exams? Hire verified local workers and technicians nearby with transparent visit fees and zero commission markup.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
             <button
               onClick={() => setIsPostJobModalOpen(true)}
-              className="px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0"
+              className="w-full sm:w-auto px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0"
             >
               <Plus className="w-4 h-4 stroke-[3]" />
               <span>Post a Work Request</span>
@@ -291,25 +291,25 @@ export const ServicesPage: React.FC = () => {
       </div>
 
       {/* 2. CATEGORY TABS & SEARCH */}
-      <div className="sticky top-16 z-30 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-slate-200/80 py-4 px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-[1560px] mx-auto flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+      <div className="sticky top-16 z-30 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-slate-200/80 py-3 sm:py-4 px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-[1560px] mx-auto flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 sm:gap-4">
           {/* Mode Switcher */}
-          <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl border border-slate-200 self-start">
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-slate-100 p-1 rounded-xl border border-slate-200 self-start overflow-x-auto no-scrollbar max-w-full">
             <button
               onClick={() => setActiveTab('PROVIDERS')}
-              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-3 sm:px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 whitespace-nowrap shrink-0 ${
                 activeTab === 'PROVIDERS'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Verified Technicians ({SERVICE_PROVIDERS.length})</span>
+              <span>Verified Mistri ({SERVICE_PROVIDERS.length})</span>
             </button>
 
             <button
               onClick={() => setActiveTab('POSTED_JOBS')}
-              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-3 sm:px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 whitespace-nowrap shrink-0 ${
                 activeTab === 'POSTED_JOBS'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -321,7 +321,7 @@ export const ServicesPage: React.FC = () => {
           </div>
 
           {activeTab === 'PROVIDERS' && (
-            <div className="flex flex-wrap items-center gap-2 flex-1 justify-end">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 flex-1 justify-end">
               <div className="relative w-full sm:w-64">
                 <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
@@ -333,25 +333,27 @@ export const ServicesPage: React.FC = () => {
                 />
               </div>
 
-              <div className="flex items-center gap-2.5 text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-2xs shrink-0">
-                <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-                <span className="hidden sm:inline">Radius:</span>
-                <input
-                  type="range"
-                  min="1"
-                  max="20"
-                  step="1"
-                  value={radiusKm}
-                  onChange={(e) => setRadiusKm(Number(e.target.value))}
-                  className="accent-emerald-700 cursor-pointer w-16"
-                />
-                <span className="font-bold text-slate-900">{radiusKm} km</span>
+              <div className="flex items-center justify-between sm:justify-start gap-2.5 text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-2xs shrink-0">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                  <span>Radius:</span>
+                  <input
+                    type="range"
+                    min="1"
+                    max="20"
+                    step="1"
+                    value={radiusKm}
+                    onChange={(e) => setRadiusKm(Number(e.target.value))}
+                    className="accent-emerald-700 cursor-pointer w-16"
+                  />
+                  <span className="font-bold text-slate-900">{radiusKm} km</span>
+                </div>
                 <span className="text-[11px] px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold border border-emerald-200 truncate max-w-[110px]">
                   {currentLocalityInfo.name}
                 </span>
               </div>
 
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 max-w-full">
                 {[
                   { id: 'ALL', label: 'All Services' },
                   { id: 'PLUMBER', label: 'Plumber' },
@@ -363,7 +365,7 @@ export const ServicesPage: React.FC = () => {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
                       selectedCategory === cat.id
                         ? 'bg-emerald-700 text-white shadow-xs'
                         : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'

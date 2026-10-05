@@ -408,25 +408,25 @@ export const MarketplacePage: React.FC = () => {
   return (
     <div className="bg-[#F8FAFC] text-slate-900 min-h-screen font-sans w-full">
       {/* 1. HEADER BANNER */}
-      <div className="bg-white border-b border-slate-200 py-10 px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-[1560px] w-full mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-white border-b border-slate-200 py-6 sm:py-10 px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-[1560px] w-full mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-2 sm:mb-3">
               <ShoppingBag className="w-3.5 h-3.5 text-emerald-700" />
               <span>OpenHand Community Marketplace & Rental Hub</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Buy, Sell & Rent Pre-Owned Gear
             </h1>
-            <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-3xl">
+            <p className="text-xs sm:text-base text-slate-600 mt-1.5 sm:mt-2 max-w-3xl leading-relaxed">
               Buy or sell used books, calculators, and cycles—or <strong>rent uncommon equipment</strong> like <strong>wheelchairs, walkers, medical gear, rotary drills, and projectors</strong> from neighbours for a few days at nominal rates.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
             <button
               onClick={handleOpenListModal}
-              className="px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0 self-start md:self-center"
+              className="w-full sm:w-auto px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0"
             >
               <Plus className="w-4 h-4 stroke-[3]" />
               <span>+ List for Sale or Rent</span>
@@ -436,13 +436,13 @@ export const MarketplacePage: React.FC = () => {
       </div>
 
       {/* 2. MODE SWITCHER (ALL / FOR SALE / FOR RENT) & HIGHLIGHT BAR */}
-      <div className="bg-emerald-50/50 border-b border-emerald-100 py-3 px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="bg-emerald-50/50 border-b border-emerald-100 py-2.5 sm:py-3 px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="max-w-[1560px] w-full mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-          {/* Mode Switcher */}
-          <div className="flex items-center gap-2 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs">
+          {/* Mode Switcher (Horizontal Swipe on Phone) */}
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs overflow-x-auto no-scrollbar max-w-full">
             <button
               onClick={() => setModeFilter('ALL')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
                 modeFilter === 'ALL'
                   ? 'bg-slate-900 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -452,18 +452,18 @@ export const MarketplacePage: React.FC = () => {
             </button>
             <button
               onClick={() => setModeFilter('RENT')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                 modeFilter === 'RENT'
                   ? 'bg-indigo-700 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Repeat className="w-3.5 h-3.5" />
-              <span>🔄 Available For Rent ({rentCount})</span>
+              <span>🔄 For Rent ({rentCount})</span>
             </button>
             <button
               onClick={() => setModeFilter('SALE')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                 modeFilter === 'SALE'
                   ? 'bg-emerald-700 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -477,29 +477,52 @@ export const MarketplacePage: React.FC = () => {
           <div className="flex items-center gap-2 text-emerald-950 font-medium text-[11px] sm:text-xs">
             <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0" />
             <span>
-              <strong>Rent instead of buying:</strong> Wheelchairs, walkers, and heavy tools available for ₹30 – ₹150/day.
+              <strong>Rent instead of buying:</strong> Wheelchairs, walkers & heavy tools from ₹30/day.
             </span>
           </div>
         </div>
       </div>
 
       {/* 3. SEARCH & CATEGORY FILTER BAR */}
-      <div className="sticky top-16 z-30 bg-[#F8FAFC]/95 backdrop-blur-md border-b border-slate-200/80 py-4 px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-[1560px] w-full mx-auto flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
-          {/* Search Input */}
-          <div className="relative flex-1 max-w-xl">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search wheelchairs, walkers, tools, books, cycles, projectors..."
-              className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-600 shadow-2xs font-medium"
-            />
+      <div className="sticky top-16 z-30 bg-[#F8FAFC]/95 backdrop-blur-md border-b border-slate-200/80 py-3 sm:py-4 px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-[1560px] w-full mx-auto flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 flex-1">
+            {/* Search Input */}
+            <div className="relative flex-1">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search wheelchairs, walkers, tools, books, cycles..."
+                className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-600 shadow-2xs font-medium"
+              />
+            </div>
+
+            {/* Locality Radius Slider */}
+            <div className="flex items-center justify-between sm:justify-start gap-2 text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-2xs shrink-0">
+              <div className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                <span>Radius:</span>
+                <input
+                  type="range"
+                  min="1"
+                  max="20"
+                  step="1"
+                  value={radiusKm}
+                  onChange={(e) => setRadiusKm(Number(e.target.value))}
+                  className="accent-emerald-700 cursor-pointer w-16"
+                />
+                <span className="font-bold text-slate-900">{radiusKm} km</span>
+              </div>
+              <span className="text-[11px] px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold border border-emerald-200 truncate max-w-[110px]">
+                {currentLocalityInfo.name}
+              </span>
+            </div>
           </div>
 
-          {/* Category Chips */}
-          <div className="flex flex-wrap items-center gap-2 overflow-x-auto pb-1">
+          {/* Category Chips (Smooth Touch Horizontal Swipe) */}
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1 max-w-full">
             {[
               { id: 'ALL', label: 'All Categories' },
               { id: 'MEDICAL_RENTAL', label: '♿ Wheelchair & Walker (Rent)' },
@@ -513,7 +536,7 @@ export const MarketplacePage: React.FC = () => {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
                   selectedCategory === cat.id
                     ? 'bg-slate-900 text-white shadow-xs'
                     : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
@@ -522,25 +545,6 @@ export const MarketplacePage: React.FC = () => {
                 {cat.label}
               </button>
             ))}
-          </div>
-
-          {/* Locality Radius Slider */}
-          <div className="flex items-center gap-2.5 text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-2xs">
-            <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-            <span className="hidden sm:inline">Radius:</span>
-            <input
-              type="range"
-              min="1"
-              max="20"
-              step="1"
-              value={radiusKm}
-              onChange={(e) => setRadiusKm(Number(e.target.value))}
-              className="accent-emerald-700 cursor-pointer w-20"
-            />
-            <span className="font-bold text-slate-900">{radiusKm} km</span>
-            <span className="text-[11px] px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold border border-emerald-200 truncate max-w-[120px]">
-              {currentLocalityInfo.name}
-            </span>
           </div>
 
           {/* Price Slider */}

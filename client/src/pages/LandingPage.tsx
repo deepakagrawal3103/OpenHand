@@ -68,15 +68,15 @@ export const LandingPage: React.FC = () => {
         />
 
         {/* Hero content container */}
-        <div className="relative z-10 w-full px-4 sm:px-8 lg:px-16 py-16 lg:py-24 flex flex-col items-center text-center max-w-6xl mx-auto">
+        <div className="relative z-10 w-full px-4 sm:px-8 lg:px-16 py-12 sm:py-16 lg:py-24 flex flex-col items-center text-center max-w-6xl mx-auto">
           {/* Live Network Beacon Pill */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-xs font-semibold text-emerald-300 mb-8 shadow-[0_0_25px_rgba(16,185,129,0.2)] animate-in fade-in slide-in-from-top-4 duration-700">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_#34d399]" />
-            <span>Indore Hyperlocal Mesh • 1,840+ Active Verified Nodes • Zero Brokerage</span>
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-[11px] sm:text-xs font-semibold text-emerald-300 mb-6 sm:mb-8 shadow-[0_0_25px_rgba(16,185,129,0.2)] animate-in fade-in slide-in-from-top-4 duration-700">
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_#34d399]" />
+            <span className="truncate max-w-[280px] xs:max-w-none">Indore Hyperlocal Mesh • 1,840+ Nodes • 0% Fee</span>
           </div>
 
           {/* Editorial Display Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08] max-w-5xl">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight text-white leading-[1.12] sm:leading-[1.08] max-w-5xl">
             Where Indore Neighbors Share,
             <br />
             <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 bg-clip-text text-transparent">
@@ -85,14 +85,14 @@ export const LandingPage: React.FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed">
+          <p className="mt-4 sm:mt-6 text-sm sm:text-lg lg:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed">
             The civic platform built for SGSITS, college students, verified Indore shelters, and local handymen. Buy & sell textbooks, fulfill shelter wishlists, or book trusted technicians without middlemen.
           </p>
 
           {/* Interactive Fast Dispatcher / Quick Search Bar */}
           <form
             onSubmit={handleQuickSubmit}
-            className="mt-10 w-full max-w-2xl bg-white/10 backdrop-blur-xl p-2 rounded-2xl border border-white/25 shadow-[0_20px_40px_rgba(0,0,0,0.3)] flex flex-col sm:flex-row items-center gap-2"
+            className="mt-8 sm:mt-10 w-full max-w-2xl bg-white/10 backdrop-blur-xl p-2 rounded-2xl border border-white/25 shadow-[0_20px_40px_rgba(0,0,0,0.3)] flex flex-col sm:flex-row items-center gap-2"
           >
             <div className="relative w-full flex items-center pl-3">
               <Search className="w-5 h-5 text-emerald-400 shrink-0" />
@@ -101,7 +101,7 @@ export const LandingPage: React.FC = () => {
                 value={quickInput}
                 onChange={(e) => setQuickInput(e.target.value)}
                 placeholder="What do you need? (e.g. 3rd yr CSE books, rent drill, leak repair...)"
-                className="w-full bg-transparent px-3 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none"
+                className="w-full bg-transparent px-3 py-2.5 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none"
               />
             </div>
             <button
@@ -113,41 +113,41 @@ export const LandingPage: React.FC = () => {
             </button>
           </form>
 
-          {/* Quick Search Chips */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
-            <span className="text-slate-400 text-[11px] font-mono uppercase tracking-wider">Popular now:</span>
+          {/* Quick Search Chips (Mobile Horizontal Scrollable) */}
+          <div className="mt-4 flex items-center justify-start sm:justify-center gap-2 text-xs overflow-x-auto no-scrollbar max-w-full pb-1 px-1">
+            <span className="text-slate-400 text-[11px] font-mono uppercase tracking-wider shrink-0">Popular:</span>
             <button
               type="button"
               onClick={() => handlePillClick('books', '/marketplace')}
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors"
+              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors whitespace-nowrap shrink-0"
             >
-              📚 College Books under ₹400
+              📚 College Books &lt; ₹400
             </button>
             <button
               type="button"
               onClick={() => handlePillClick('wheelchair', '/marketplace')}
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors"
+              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors whitespace-nowrap shrink-0"
             >
               ♿ Rent Wheelchair / Walker
             </button>
             <button
               type="button"
               onClick={() => handlePillClick('plumber', '/services')}
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors"
+              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors whitespace-nowrap shrink-0"
             >
-              🔧 Plumber (Nal Mistri) ₹150
+              🔧 Plumber ₹150
             </button>
             <button
               type="button"
               onClick={() => handlePillClick('shelter', '/donate')}
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors"
+              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors whitespace-nowrap shrink-0"
             >
               🍲 Vriddhashram Wishlists
             </button>
             <button
               type="button"
               onClick={() => navigate('/donate')}
-              className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-300 text-xs font-semibold transition-colors flex items-center gap-1"
+              className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-300 text-xs font-semibold transition-colors flex items-center gap-1 whitespace-nowrap shrink-0"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
               <span>🚨 Midnight Food Rescue</span>
@@ -155,28 +155,28 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Key Metric Tiles */}
-          <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-4xl">
-            <div className="p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
-              <div className="text-2xl sm:text-3xl font-black text-white">₹50 - ₹500</div>
-              <div className="text-xs text-slate-300 mt-1">Average Student Gear Price</div>
+          <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
+              <div className="text-xl sm:text-3xl font-black text-white">₹50 - ₹500</div>
+              <div className="text-[11px] sm:text-xs text-slate-300 mt-1">Average Student Gear Price</div>
               <div className="text-[10px] text-emerald-400 font-mono mt-1 font-semibold">90% savings vs new</div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
-              <div className="text-2xl sm:text-3xl font-black text-white">5+ Shelters</div>
-              <div className="text-xs text-slate-300 mt-1">Verified Indore Old Age Homes</div>
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
+              <div className="text-xl sm:text-3xl font-black text-white">5+ Shelters</div>
+              <div className="text-[11px] sm:text-xs text-slate-300 mt-1">Verified Indore Old Age Homes</div>
               <div className="text-[10px] text-emerald-400 font-mono mt-1 font-semibold">Direct wishlist fulfillment</div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
-              <div className="text-2xl sm:text-3xl font-black text-white">Under 1 km</div>
-              <div className="text-xs text-slate-300 mt-1">Hyperlocal Neighborhood Radius</div>
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
+              <div className="text-xl sm:text-3xl font-black text-white">Under 1 km</div>
+              <div className="text-[11px] sm:text-xs text-slate-300 mt-1">Hyperlocal Mohalla Radius</div>
               <div className="text-[10px] text-emerald-400 font-mono mt-1 font-semibold">Hostel & colony gates</div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
-              <div className="text-2xl sm:text-3xl font-black text-emerald-400">100% Direct</div>
-              <div className="text-xs text-slate-300 mt-1">Zero Brokerage Commission</div>
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
+              <div className="text-xl sm:text-3xl font-black text-emerald-400">100% Direct</div>
+              <div className="text-[11px] sm:text-xs text-slate-300 mt-1">Zero Brokerage Commission</div>
               <div className="text-[10px] text-emerald-300 font-mono mt-1 font-semibold">₹0 taken by platform</div>
             </div>
           </div>
