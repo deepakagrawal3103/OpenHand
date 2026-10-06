@@ -173,10 +173,10 @@ export const CreateIdPage: React.FC = () => {
         </div>
 
         {/* Quick Demo Pre-fill Bar */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-3 sm:p-4 shadow-sm flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs">
+        <div className="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 shadow-sm flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs">
           <div className="flex items-center gap-2 sm:gap-2.5 text-slate-700 font-medium">
             <div className="w-6 sm:w-7 h-6 sm:h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
-              ⚡
+              <Zap className="w-3.5 h-3.5" />
             </div>
             <span><strong>1-Click Indore Pre-fills:</strong> Test instantaneous matching without typing</span>
           </div>
@@ -515,11 +515,11 @@ export const CreateIdPage: React.FC = () => {
                   />
                   <label htmlFor="wa_opt_in" className="cursor-pointer">
                     <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                      <span className="text-base">📲</span>
+                      <Phone className="w-4 h-4 text-emerald-600" />
                       <span>Instant Automated WhatsApp Alerts</span>
                     </div>
                     <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
-                      Receive immediate ping whenever a matching item or request is published in your Indore sector.
+                      Receive immediate notification whenever a matching item or request is published in your Indore sector.
                     </p>
                   </label>
                 </div>
@@ -550,7 +550,7 @@ export const CreateIdPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full sm:w-auto px-7 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold text-xs rounded-xl shadow-[0_4px_14px_rgba(4,120,87,0.3)] transition-all flex items-center justify-center gap-2 active:scale-[0.99]"
+                  className="w-full sm:w-auto px-7 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 active:scale-[0.99]"
                 >
                   <span>{loading ? 'Generating OpenHand ID...' : 'Generate Civic ID & View Live Matches'}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -563,20 +563,16 @@ export const CreateIdPage: React.FC = () => {
           <div className="lg:col-span-5 sticky top-24 space-y-4">
             <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5 px-1">
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>LIVE DIGITAL IDENTITY PREVIEW</span>
+              <span>DIGITAL IDENTITY PREVIEW</span>
             </div>
 
             {/* Premium Digital ID Card */}
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950 p-6 text-white border border-slate-700/60 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all">
-              {/* Background ambient mesh */}
-              <div className="absolute inset-0 bg-radar-grid opacity-25 pointer-events-none" />
-              <div className="absolute -top-12 -right-12 w-44 h-44 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none" />
-
+            <div className="relative rounded-xl overflow-hidden bg-slate-900 p-6 text-white border border-slate-800 shadow-xl transition-all">
               {/* Card Header */}
               <div className="relative z-10 flex items-center justify-between pb-4 border-b border-white/10">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 flex items-center justify-center font-bold text-sm">
-                    🤝
+                  <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs tracking-tight">
+                    OH
                   </div>
                   <div>
                     <div className="font-extrabold text-sm tracking-tight text-white">OPENHAND CIVIC ID</div>
@@ -585,7 +581,7 @@ export const CreateIdPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-[10px] font-mono font-bold text-emerald-300">
+                <div className="px-2 py-0.5 rounded-md bg-emerald-500/20 border border-emerald-400/40 text-[10px] font-mono font-bold text-emerald-300">
                   VERIFIED
                 </div>
               </div>
@@ -629,7 +625,7 @@ export const CreateIdPage: React.FC = () => {
                 )}
 
                 {entityType === 'SKILLED_WORKER' && (
-                  <div className="pt-2 flex items-center justify-between bg-white/5 p-3 rounded-2xl border border-white/10">
+                  <div className="pt-2 flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/10">
                     <div>
                       <div className="text-[10px] font-mono text-slate-400">TRADE</div>
                       <div className="text-xs font-bold text-white">{primarySkill}</div>
@@ -644,10 +640,11 @@ export const CreateIdPage: React.FC = () => {
                 {whatsappNotifications && (
                   <div className="pt-2 flex items-center justify-between text-[11px] text-emerald-300 bg-emerald-950/60 p-2.5 rounded-xl border border-emerald-500/30">
                     <div className="flex items-center gap-1.5 font-medium">
-                      <span>📲 WhatsApp Alert:</span>
+                      <Phone className="w-3 h-3 text-emerald-400" />
+                      <span>WhatsApp Alert:</span>
                       <span className="font-mono">{whatsappNumber}</span>
                     </div>
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
                   </div>
                 )}
               </div>

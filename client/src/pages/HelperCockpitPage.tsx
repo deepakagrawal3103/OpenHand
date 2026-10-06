@@ -94,7 +94,7 @@ export const HelperCockpitPage: React.FC = () => {
             <div className="flex items-center gap-2">
               <span
                 className={`w-2.5 h-2.5 rounded-full ${
-                  isAvailable ? 'bg-emerald-500 animate-ping' : 'bg-ink-subtle'
+                  isAvailable ? 'bg-emerald-500' : 'bg-ink-subtle'
                 }`}
               />
               <span className="text-xs font-mono font-bold text-ink">

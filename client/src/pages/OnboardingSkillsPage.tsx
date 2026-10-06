@@ -61,7 +61,7 @@ export const OnboardingSkillsPage: React.FC = () => {
             What can you help repair or lend?
           </h1>
           <p className="text-xs text-ink-muted mt-1">
-            Free-text input + AI suggested tags. Our matching engine pairs you with incidents requiring these capabilities.
+            Free-text input or recommended tags. Our matching engine pairs you with incidents requiring these capabilities.
           </p>
         </div>
 
@@ -119,11 +119,11 @@ export const OnboardingSkillsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* AI Suggested Chips from PRD */}
+        {/* Recommended Chips from PRD */}
         <div className="bg-[#FAF8F5] border border-line rounded-[8px] p-4 space-y-2">
           <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-brand">
             <Sparkles className="w-3.5 h-3.5 text-brand" />
-            <span>AI Suggested Indore Campus Tags (Click to accept)</span>
+            <span>Recommended Indore Campus Tags (Click to select)</span>
           </div>
 
           <div className="flex flex-wrap gap-1.5 pt-1">

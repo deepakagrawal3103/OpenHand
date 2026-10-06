@@ -88,9 +88,9 @@ export const RequestDetailPage: React.FC = () => {
           <div className="p-4 bg-brand-light/70 border border-brand/20 rounded-[8px] space-y-1.5 text-xs font-mono">
             <div className="flex items-center gap-2">
               <span className="px-1.5 py-0.5 bg-brand text-white text-[9px] uppercase font-bold rounded">
-                AI TRIAGE SUMMARY
+                AUTOMATED TRIAGE SUMMARY
               </span>
-              <span className="font-bold text-brand">Confidence: 93%</span>
+              <span className="font-bold text-brand">System Verified</span>
             </div>
             <p className="text-ink text-[11px] leading-relaxed">
               {request.aiAudit.summary}

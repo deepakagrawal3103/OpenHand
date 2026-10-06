@@ -116,14 +116,14 @@ export const TrackingTimelinePage: React.FC = () => {
           </div>
         </div>
 
-        {/* AI Insight Block if present */}
+        {/* Automated Audit Block if present */}
         {request.aiAudit && (
           <div className="bg-brand-light/70 border border-brand/20 rounded-[10px] p-4 text-xs font-mono space-y-2">
             <div className="flex items-center gap-2">
               <span className="px-1.5 py-0.5 bg-brand text-white text-[9px] uppercase font-bold rounded">
-                AI TRIAGE AUDIT
+                AUTOMATED AUDIT LOG
               </span>
-              <span className="font-bold text-brand">Model: {request.aiAudit.modelVersion}</span>
+              <span className="font-bold text-brand">System Engine: v2.4</span>
             </div>
             <p className="text-ink text-[11px] leading-relaxed">
               {request.aiAudit.summary}

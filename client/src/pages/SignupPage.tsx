@@ -47,7 +47,7 @@ export const SignupPage: React.FC = () => {
       <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-teal-600/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Container */}
-      <div className="relative z-10 w-full max-w-5xl bg-white/95 backdrop-blur-2xl rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.4)] border border-white/40 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+      <div className="relative z-10 w-full max-w-5xl bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
         {/* Left Column: Mission & Trust */}
         <div className="lg:col-span-5 bg-gradient-to-br from-emerald-900 via-emerald-950 to-slate-950 p-8 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden">
           <div className="absolute inset-0 bg-radar-grid opacity-20 pointer-events-none" />
@@ -55,8 +55,8 @@ export const SignupPage: React.FC = () => {
           {/* Top Branding */}
           <div className="relative z-10 space-y-4">
             <Link to="/" className="inline-flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-xl bg-white text-emerald-900 flex items-center justify-center font-extrabold text-base shadow-md group-hover:scale-105 transition-transform">
-                🤝
+              <div className="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-black text-sm tracking-tight shadow-sm">
+                OH
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg tracking-tight text-white leading-none">
@@ -69,12 +69,12 @@ export const SignupPage: React.FC = () => {
             </Link>
 
             <div className="pt-6 space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-800/60 border border-emerald-600/50 text-[11px] font-medium text-emerald-200">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-800/60 border border-emerald-600/50 text-[11px] font-medium text-emerald-200">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Zero Commission • Verified Community</span>
+                <span>Zero Commission • Direct Local Access</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
-                Join 1,840+ verified neighbors across Indore.
+                Connect with neighbors and verified services across Indore.
               </h2>
               <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
                 Connect directly with SGSITS and Indore campus peers, pass along textbooks, lend tools, or find reliable neighborhood support.

@@ -46,40 +46,23 @@ router.get('/', async (req, res) => {
       },
     });
 
+    const realTicker = recentResolutions.map((task) => ({
+      location: task.request?.locationText || 'Indore',
+      text: `${task.request?.title || 'Community Request'} resolved by ${task.helper?.name || 'Helper'}`,
+      timeAgo: 'Recently',
+    }));
+
     return res.json({
       success: true,
       data: {
         counters: {
-          activeRequests: Math.max(activeRequests, 127),
-          helpersOnline: Math.max(helpersOnline, 42),
-          organizationsOnline: 18,
-          problemsSolved: Math.max(resolvedTasks, 1420),
-          avgDispatchMinutes: 3.4,
-          verificationRate: '99.2%',
-          fees: '₹0 Fees',
+          activeRequests,
+          helpersOnline,
+          problemsSolved: resolvedTasks,
+          totalRequests,
+          fees: '₹0 Platform Fee',
         },
-        ticker: [
-          {
-            location: 'SGSITS CS Wing',
-            text: "Lab 3 PCs boot failure resolved by Aarav P.",
-            timeAgo: '14m ago',
-          },
-          {
-            location: 'Bhawarkua',
-            text: 'Soldering iron & breadboards handed over for IoT lab',
-            timeAgo: '28m ago',
-          },
-          {
-            location: 'Old Palasia',
-            text: '3D Printer bed calibration clinic active at Makers Club',
-            timeAgo: '42m ago',
-          },
-          {
-            location: 'Geeta Bhawan',
-            text: '12V 2A power adapter matched and delivered to robotics team',
-            timeAgo: '1h ago',
-          },
-        ],
+        ticker: realTicker,
         requests,
         recentResolutions,
       },

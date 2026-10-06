@@ -151,7 +151,7 @@ export const LiveRadarPage: React.FC = () => {
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5 px-2 py-0.5 bg-brand text-emerald-300 font-mono text-xs font-bold uppercase rounded">
-              <Radio className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+              <Radio className="w-3.5 h-3.5 text-emerald-400" />
               <span>INDORE LIVE RADAR</span>
             </div>
             <span className="text-xs font-mono text-white/60 hidden sm:inline">
@@ -162,28 +162,29 @@ export const LiveRadarPage: React.FC = () => {
           {/* Metric Counters */}
           <div className="flex flex-wrap items-center gap-4 text-xs font-mono">
             <div>
-              <span className="text-emerald-400 font-bold">127</span>
-              <span className="text-white/60 ml-1">Active</span>
+              <span className="text-emerald-400 font-bold">
+                {liveData?.counters?.activeRequests ?? liveData?.requests?.length ?? 0}
+              </span>
+              <span className="text-white/60 ml-1">Active Requests</span>
             </div>
             <div className="text-white/20">•</div>
             <div>
-              <span className="text-emerald-400 font-bold">42</span>
-              <span className="text-white/60 ml-1">Helpers Online</span>
+              <span className="text-emerald-400 font-bold">
+                {liveData?.counters?.helpersOnline ?? 0}
+              </span>
+              <span className="text-white/60 ml-1">Helpers</span>
             </div>
             <div className="text-white/20">•</div>
             <div>
-              <span className="text-emerald-400 font-bold">18</span>
-              <span className="text-white/60 ml-1">Orgs</span>
+              <span className="text-emerald-400 font-bold">
+                {liveData?.counters?.problemsSolved ?? 0}
+              </span>
+              <span className="text-white/60 ml-1">Resolved</span>
             </div>
             <div className="text-white/20">•</div>
             <div>
-              <span className="text-emerald-400 font-bold">3.4m</span>
-              <span className="text-white/60 ml-1">Avg Dispatch</span>
-            </div>
-            <div className="text-white/20">•</div>
-            <div>
-              <span className="text-emerald-400 font-bold">99.2%</span>
-              <span className="text-white/60 ml-1">Verified</span>
+              <span className="text-emerald-400 font-bold">₹0</span>
+              <span className="text-white/60 ml-1">Fee</span>
             </div>
           </div>
         </div>
@@ -311,25 +312,31 @@ export const LiveRadarPage: React.FC = () => {
           {/* Live Activity Stream */}
           <div className="flex-1 space-y-3 overflow-y-auto">
             <div className="text-xs font-mono uppercase tracking-wider text-white/60 flex items-center justify-between">
-              <span>LIVE PEER DISPATCH FEED</span>
+              <span>COMMUNITY ACTIVITY FEED</span>
               <span className="text-emerald-400 font-bold">REALTIME</span>
             </div>
 
             <div className="space-y-2.5 text-xs font-mono">
-              {liveData?.ticker?.map((item: any, i: number) => (
-                <div
-                  key={i}
-                  className="bg-[#17241D]/60 border border-[#23372D] p-2.5 rounded-[6px] space-y-1"
-                >
-                  <div className="flex items-center justify-between text-[10px]">
-                    <span className="text-emerald-400 font-bold">● {item.location}</span>
-                    <span className="text-white/40">{item.timeAgo}</span>
+              {liveData?.ticker && liveData.ticker.length > 0 ? (
+                liveData.ticker.map((item: any, i: number) => (
+                  <div
+                    key={i}
+                    className="bg-[#17241D]/60 border border-[#23372D] p-2.5 rounded-[6px] space-y-1"
+                  >
+                    <div className="flex items-center justify-between text-[10px]">
+                      <span className="text-emerald-400 font-bold">● {item.location}</span>
+                      <span className="text-white/40">{item.timeAgo}</span>
+                    </div>
+                    <p className="text-white/80 text-[11px] leading-snug">
+                      {item.text}
+                    </p>
                   </div>
-                  <p className="text-white/80 text-[11px] leading-snug">
-                    {item.text}
-                  </p>
+                ))
+              ) : (
+                <div className="p-4 border border-[#23372D] rounded-[6px] text-white/50 text-center text-xs">
+                  No recent activity logged yet.
                 </div>
-              ))}
+              )}
             </div>
           </div>
 

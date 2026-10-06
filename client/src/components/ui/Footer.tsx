@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
           <span className="font-mono text-white/50">Indore Hyperlocal Community Network</span>
         </div>
 
-        <div className="flex flex-wrap items-center gap-6">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           <Link to="/marketplace" className="hover:text-white transition-colors">
             Buy, Sell & Rent
           </Link>
@@ -52,10 +52,15 @@ export const Footer: React.FC = () => {
           <Link to="/live" className="hover:text-white transition-colors">
             Live Radar
           </Link>
-          <span className="text-white/40">Built for local resilience</span>
+          <Link to="/privacy" className="hover:text-white transition-colors">
+            Privacy Policy
+          </Link>
+          <Link to="/terms" className="hover:text-white transition-colors">
+            Terms
+          </Link>
         </div>
 
-        <div className="font-mono text-white/50">
+        <div className="font-mono text-white/50 text-center md:text-right">
           © 2026 OpenHand Community Platform.
         </div>
       </div>

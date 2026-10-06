@@ -22,6 +22,9 @@ import {
   Star,
   Phone,
   SlidersHorizontal,
+  BookOpen,
+  Activity,
+  AlertTriangle,
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
@@ -53,46 +56,44 @@ export const LandingPage: React.FC = () => {
 
   return (
     <div className="bg-[#F8FAFC] text-slate-900 min-h-screen font-sans w-full flex flex-col selection:bg-emerald-500 selection:text-white">
-      {/* 1. CINEMATIC LUXURY HERO SECTION */}
-      <section className="relative w-full min-h-auto sm:min-h-[85vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 border-b border-slate-800">
-        {/* Ambient mesh & lights */}
-        <div className="absolute inset-0 bg-radar-grid opacity-20 pointer-events-none" />
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-emerald-600/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-teal-600/15 rounded-full blur-[140px] pointer-events-none" />
+      {/* 1. PROFESSIONAL HERO SECTION */}
+      <section className="relative w-full min-h-auto sm:min-h-[80vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-950 border-b border-slate-800">
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-radar-grid opacity-15 pointer-events-none" />
 
-        {/* Subtle authentic background photo overlay with refined dark blending */}
+        {/* Authentic background photo overlay with clean dark blending */}
         <img
           src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=2000&auto=format&fit=crop&q=85"
-          alt="Hands helping each other in civic harmony"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-20 filter contrast-125 pointer-events-none"
+          alt="Community collaboration and civic care"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-15 pointer-events-none"
         />
 
         {/* Hero content container */}
-        <div className="relative z-10 w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-16 lg:py-24 flex flex-col items-center text-center max-w-6xl mx-auto">
-          {/* Live Network Beacon Pill */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-[11px] sm:text-xs font-semibold text-emerald-300 mb-4 sm:mb-8 shadow-[0_0_25px_rgba(16,185,129,0.2)] animate-in fade-in slide-in-from-top-4 duration-700">
-            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_#34d399]" />
-            <span className="truncate max-w-[280px] xs:max-w-none">Indore Hyperlocal Network • 1,840+ Verified Residents • 0% Fee</span>
+        <div className="relative z-10 w-full px-4 sm:px-8 lg:px-16 py-10 sm:py-16 lg:py-20 flex flex-col items-center text-center max-w-5xl mx-auto">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-xs font-semibold text-emerald-300 mb-4 sm:mb-6">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span>Indore Hyperlocal Network • Verified Community Listings • Zero Platform Fee</span>
           </div>
 
-          {/* Editorial Display Headline */}
-          <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight text-white leading-[1.15] sm:leading-[1.08] max-w-5xl">
+          {/* Headline */}
+          <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.18] sm:leading-[1.12] max-w-4xl">
             Where Indore Neighbors Share,
             <br />
-            <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 bg-clip-text text-transparent">
-              Donate & Fix in 45 Minutes.
+            <span className="text-emerald-400">
+              Donate & Support Local Services.
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-3 sm:mt-6 text-xs sm:text-lg lg:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed">
-            The civic platform built for SGSITS, college students, verified Indore shelters, and local handymen. Buy & sell textbooks, fulfill shelter wishlists, or book trusted technicians without middlemen.
+          <p className="mt-3 sm:mt-5 text-sm sm:text-base lg:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
+            A free civic platform connecting college students, residential colonies, verified elderly care homes, and local handymen in Indore. Buy and sell textbooks, fulfill shelter wishlists, or book trusted technicians directly without middlemen.
           </p>
 
-          {/* Interactive Fast Dispatcher / Quick Search Bar */}
+          {/* Search Dispatcher */}
           <form
             onSubmit={handleQuickSubmit}
-            className="mt-5 sm:mt-10 w-full max-w-2xl bg-white/10 backdrop-blur-xl p-1.5 sm:p-2 rounded-2xl border border-white/25 shadow-[0_20px_40px_rgba(0,0,0,0.3)] flex flex-col sm:flex-row items-center gap-2"
+            className="mt-6 sm:mt-8 w-full max-w-2xl bg-slate-900/90 p-1.5 sm:p-2 rounded-lg border border-slate-700/80 shadow-md flex flex-col sm:flex-row items-center gap-2"
           >
             <div className="relative w-full flex items-center pl-3">
               <Search className="w-5 h-5 text-emerald-400 shrink-0" />
@@ -101,83 +102,87 @@ export const LandingPage: React.FC = () => {
                 value={quickInput}
                 onChange={(e) => setQuickInput(e.target.value)}
                 placeholder="What do you need? (e.g. 3rd yr CSE books, rent drill, leak repair...)"
-                className="w-full bg-transparent px-3 py-2.5 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none"
+                className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none"
               />
             </div>
             <button
               type="submit"
-              className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-[0_4px_14px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2 whitespace-nowrap active:scale-[0.98]"
+              className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm rounded-md transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
             >
-              <span>Post Need</span>
+              <span>Post Request</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
-          {/* Quick Search Chips (Mobile Horizontal Scrollable) */}
+          {/* Quick Search Chips */}
           <div className="mt-4 flex items-center justify-start sm:justify-center gap-2 text-xs overflow-x-auto no-scrollbar max-w-full pb-1 px-1">
-            <span className="text-slate-400 text-[11px] font-mono uppercase tracking-wider shrink-0">Popular:</span>
+            <span className="text-slate-400 text-[11px] font-mono uppercase tracking-wider shrink-0">Explore:</span>
             <button
               type="button"
               onClick={() => handlePillClick('books', '/marketplace')}
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors whitespace-nowrap shrink-0"
+              className="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 text-xs transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
             >
-              📚 College Books &lt; ₹400
+              <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
+              <span>College Books</span>
             </button>
             <button
               type="button"
               onClick={() => handlePillClick('wheelchair', '/marketplace')}
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors whitespace-nowrap shrink-0"
+              className="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 text-xs transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
             >
-              ♿ Rent Wheelchair / Walker
+              <Activity className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Rent Wheelchairs & Walkers</span>
             </button>
             <button
               type="button"
               onClick={() => handlePillClick('plumber', '/services')}
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors whitespace-nowrap shrink-0"
+              className="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 text-xs transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
             >
-              🔧 Plumber ₹150
+              <Wrench className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Local Technicians</span>
             </button>
             <button
               type="button"
               onClick={() => handlePillClick('shelter', '/donate')}
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs transition-colors whitespace-nowrap shrink-0"
+              className="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 text-xs transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
             >
-              🍲 Vriddhashram Wishlists
+              <Heart className="w-3.5 h-3.5 text-rose-400" />
+              <span>Shelter Wishlists</span>
             </button>
             <button
               type="button"
               onClick={() => navigate('/donate')}
-              className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-300 text-xs font-semibold transition-colors flex items-center gap-1 whitespace-nowrap shrink-0"
+              className="px-2.5 py-1 rounded-md bg-amber-950/60 hover:bg-amber-900/60 border border-amber-700/60 text-amber-300 text-xs font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-              <span>🚨 Midnight Food Rescue</span>
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+              <span>Food Rescue</span>
             </button>
           </div>
 
           {/* Key Metric Tiles */}
-          <div className="mt-6 sm:mt-12 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 w-full max-w-4xl">
-            <div className="p-3 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
-              <div className="text-lg sm:text-3xl font-black text-white">₹50 - ₹500</div>
-              <div className="text-[10px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1">Student Gear Price</div>
-              <div className="text-[10px] text-emerald-400 font-mono mt-0.5 sm:mt-1 font-semibold">90% savings vs new</div>
+          <div className="mt-6 sm:mt-10 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 w-full max-w-4xl">
+            <div className="p-3 sm:p-4 rounded-lg bg-slate-900/80 border border-slate-800 text-left">
+              <div className="text-base sm:text-lg font-bold text-white">Student Marketplace</div>
+              <div className="text-[11px] text-slate-300 mt-0.5">Pre-owned books, cycles & tools</div>
+              <div className="text-[10px] text-emerald-400 font-mono mt-1 font-semibold">Direct peer exchange</div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
-              <div className="text-lg sm:text-3xl font-black text-white">5+ Shelters</div>
-              <div className="text-[10px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1">Indore Old Age Homes</div>
-              <div className="text-[10px] text-emerald-400 font-mono mt-0.5 sm:mt-1 font-semibold">Wishlist fulfillment</div>
+            <div className="p-3 sm:p-4 rounded-lg bg-slate-900/80 border border-slate-800 text-left">
+              <div className="text-base sm:text-lg font-bold text-white">Verified Shelters</div>
+              <div className="text-[11px] text-slate-300 mt-0.5">Old age homes & child care</div>
+              <div className="text-[10px] text-emerald-400 font-mono mt-1 font-semibold">Real-time wishlists</div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
-              <div className="text-lg sm:text-3xl font-black text-white">Under 1 km</div>
-              <div className="text-[10px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1">Hyperlocal Radius</div>
-              <div className="text-[10px] text-emerald-400 font-mono mt-0.5 sm:mt-1 font-semibold">Hostel & colony gates</div>
+            <div className="p-3 sm:p-4 rounded-lg bg-slate-900/80 border border-slate-800 text-left">
+              <div className="text-base sm:text-lg font-bold text-white">Local Coverage</div>
+              <div className="text-[11px] text-slate-300 mt-0.5">Bhawarkua, Palasia & colleges</div>
+              <div className="text-[10px] text-emerald-400 font-mono mt-1 font-semibold">Hyperlocal network</div>
             </div>
 
-            <div className="p-3 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-left">
-              <div className="text-lg sm:text-3xl font-black text-emerald-400">100% Direct</div>
-              <div className="text-[10px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1">Zero Commission</div>
-              <div className="text-[10px] text-emerald-300 font-mono mt-0.5 sm:mt-1 font-semibold">₹0 taken by platform</div>
+            <div className="p-3 sm:p-4 rounded-lg bg-slate-900/80 border border-slate-800 text-left">
+              <div className="text-base sm:text-lg font-bold text-emerald-400">Zero Commission</div>
+              <div className="text-[11px] text-slate-300 mt-0.5">No platform transaction fees</div>
+              <div className="text-[10px] text-emerald-300 font-mono mt-1 font-semibold">100% direct payment</div>
             </div>
           </div>
         </div>
@@ -201,7 +206,7 @@ export const LandingPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
             {/* Card 1: Marketplace */}
-            <div className="bg-white rounded-3xl border border-slate-200/80 shadow-clean hover:shadow-elevated transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1">
+            <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group">
               <div>
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <img
@@ -210,13 +215,13 @@ export const LandingPage: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-xl bg-white/95 backdrop-blur-md text-xs font-bold text-slate-900 shadow-sm flex items-center gap-1.5">
+                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-md bg-white/95 text-xs font-bold text-slate-900 shadow-sm flex items-center gap-1.5">
                     <Coins className="w-3.5 h-3.5 text-emerald-700" />
                     <span>Buy, Sell & Rent from ₹30/day</span>
                   </span>
                 </div>
 
-                <div className="p-4 sm:p-7 space-y-2.5 sm:space-y-3">
+                <div className="p-4 sm:p-6 space-y-2.5 sm:space-y-3">
                   <div className="flex items-center gap-2 text-xs font-bold text-emerald-800">
                     <ShoppingBag className="w-4 h-4 text-emerald-600" />
                     <span>STUDENT MARKETPLACE & RENTAL</span>
@@ -227,27 +232,27 @@ export const LandingPage: React.FC = () => {
                   </h3>
 
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Sell used college books, cycles, and calculators—or rent uncommon items like <strong>wheelchairs, walkers, hospital gear, heavy hammer drills, and projectors</strong> at nominal daily rates.
+                    Sell used college books, cycles, and calculators, or rent uncommon items like <strong>wheelchairs, walkers, hospital gear, heavy hammer drills, and projectors</strong> at nominal daily rates.
                   </p>
 
                   <div className="pt-1 sm:pt-2 flex flex-wrap gap-1.5">
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-emerald-50 border border-emerald-200 text-emerald-900 font-semibold">
-                      ♿ Rent Wheelchair & Walker
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-emerald-50 border border-emerald-200 text-emerald-900 font-semibold">
+                      Rent Wheelchairs & Walkers
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-100 text-slate-700 font-medium">
-                      🛠️ Rent Heavy Drills
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-slate-100 text-slate-700 font-medium">
+                      Rent Heavy Drills
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-100 text-slate-700 font-medium">
-                      📚 Engineering Textbooks
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-slate-100 text-slate-700 font-medium">
+                      Engineering Textbooks
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div className="p-4 sm:p-7 pt-0">
+              <div className="p-4 sm:p-6 pt-0">
                 <Link
                   to="/marketplace"
-                  className="w-full py-2.5 sm:py-3 px-4 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 group-hover:shadow-md"
+                  className="w-full py-2.5 px-4 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-lg transition-all shadow-xs flex items-center justify-center gap-2"
                 >
                   <span>Explore Items & Rentals</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -256,7 +261,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Card 2: Donation */}
-            <div className="bg-white rounded-3xl border border-slate-200/80 shadow-clean hover:shadow-elevated transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1">
+            <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group">
               <div>
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <img
@@ -265,13 +270,13 @@ export const LandingPage: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-xl bg-white/95 backdrop-blur-md text-xs font-bold text-slate-900 shadow-sm flex items-center gap-1.5">
+                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-md bg-white/95 text-xs font-bold text-slate-900 shadow-sm flex items-center gap-1.5">
                     <Heart className="w-3.5 h-3.5 text-rose-600 fill-rose-600" />
-                    <span>5+ Verified Indore Shelters</span>
+                    <span>Verified Indore Shelters</span>
                   </span>
                 </div>
 
-                <div className="p-4 sm:p-7 space-y-2.5 sm:space-y-3">
+                <div className="p-4 sm:p-6 space-y-2.5 sm:space-y-3">
                   <div className="flex items-center gap-2 text-xs font-bold text-rose-700">
                     <Heart className="w-4 h-4 text-rose-600" />
                     <span>COMMUNITY GIVING</span>
@@ -286,23 +291,23 @@ export const LandingPage: React.FC = () => {
                   </p>
 
                   <div className="pt-1 sm:pt-2 flex flex-wrap gap-1.5">
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-rose-50 border border-rose-200 text-rose-900 font-semibold">
-                      🏠 Aastha Vriddhashram
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-rose-50 border border-rose-200 text-rose-900 font-semibold">
+                      Aastha Vriddhashram
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-100 text-slate-700 font-medium">
-                      🍲 Surplus Food Rescue
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-slate-100 text-slate-700 font-medium">
+                      Surplus Food Rescue
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-100 text-slate-700 font-medium">
-                      🧥 Goonj Cloth Bank
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-slate-100 text-slate-700 font-medium">
+                      Goonj Cloth Bank
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div className="p-4 sm:p-7 pt-0">
+              <div className="p-4 sm:p-6 pt-0">
                 <Link
                   to="/donate"
-                  className="w-full py-2.5 sm:py-3 px-4 bg-rose-700 hover:bg-rose-800 text-white font-bold text-xs rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 group-hover:shadow-md"
+                  className="w-full py-2.5 px-4 bg-rose-700 hover:bg-rose-800 text-white font-bold text-xs rounded-lg transition-all shadow-xs flex items-center justify-center gap-2"
                 >
                   <span>View Shelters & Wishlists</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -311,7 +316,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Card 3: Services */}
-            <div className="bg-white rounded-3xl border border-slate-200/80 shadow-clean hover:shadow-elevated transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1">
+            <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group">
               <div>
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <img
@@ -320,13 +325,13 @@ export const LandingPage: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-xl bg-white/95 backdrop-blur-md text-xs font-bold text-slate-900 shadow-sm flex items-center gap-1.5">
+                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-md bg-white/95 text-xs font-bold text-slate-900 shadow-sm flex items-center gap-1.5">
                     <Wrench className="w-3.5 h-3.5 text-blue-700" />
                     <span>Verified Mistri • From ₹150 Visit Fee</span>
                   </span>
                 </div>
 
-                <div className="p-4 sm:p-7 space-y-2.5 sm:space-y-3">
+                <div className="p-4 sm:p-6 space-y-2.5 sm:space-y-3">
                   <div className="flex items-center gap-2 text-xs font-bold text-blue-700">
                     <Wrench className="w-4 h-4 text-blue-600" />
                     <span>LOCAL SERVICES & REPAIR</span>
@@ -341,23 +346,23 @@ export const LandingPage: React.FC = () => {
                   </p>
 
                   <div className="pt-1 sm:pt-2 flex flex-wrap gap-1.5">
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-blue-50 border border-blue-200 text-blue-900 font-semibold">
-                      🚰 Nal Mistri (Plumber)
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-blue-50 border border-blue-200 text-blue-900 font-semibold">
+                      Plumbing (Nal Mistri)
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-100 text-slate-700 font-medium">
-                      ⚡ Bijli Mistri
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-slate-100 text-slate-700 font-medium">
+                      Electrical (Bijli Mistri)
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-100 text-slate-700 font-medium">
-                      💻 PC Diagnostics
+                    <span className="px-2.5 py-1 rounded-md text-[11px] bg-slate-100 text-slate-700 font-medium">
+                      PC Diagnostics
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div className="p-4 sm:p-7 pt-0">
+              <div className="p-4 sm:p-6 pt-0">
                 <Link
                   to="/services"
-                  className="w-full py-2.5 sm:py-3 px-4 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 group-hover:shadow-md"
+                  className="w-full py-2.5 px-4 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs rounded-lg transition-all shadow-xs flex items-center justify-center gap-2"
                 >
                   <span>Find Handymen Nearby</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -367,18 +372,16 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* OPENHAND ID & AUTOMATED WHATSAPP ALERTS CALLOUT */}
-          <div className="mt-8 sm:mt-14 bg-gradient-to-r from-emerald-950 via-slate-950 to-emerald-900 rounded-3xl p-5 sm:p-8 lg:p-12 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 border border-emerald-800/40 relative overflow-hidden">
-            <div className="absolute inset-0 bg-radar-grid opacity-15 pointer-events-none" />
-
+          <div className="mt-8 sm:mt-14 bg-slate-900 rounded-xl p-5 sm:p-8 lg:p-10 text-white shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 border border-slate-800 relative overflow-hidden">
             <div className="space-y-2 sm:space-y-3 max-w-2xl relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-800/60 text-emerald-200 border border-emerald-600/50 text-xs font-semibold">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <span>Automated Indore Alert Radar</span>
               </div>
-              <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                 Are you an NGO, Shelter, or Skilled Worker?
               </h3>
-              <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Create your OpenHand ID with your wishlist tags or trade skills. We match suitable items and work orders for you, and automatically ping you on <strong>WhatsApp</strong> the moment someone lists them in Indore!
               </p>
             </div>
@@ -386,14 +389,14 @@ export const LandingPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 w-full md:w-auto shrink-0 relative z-10">
               <Link
                 to="/create-id"
-                className="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 bg-white hover:bg-slate-100 text-emerald-950 font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm rounded-lg transition-colors flex items-center justify-center gap-2"
               >
                 <span>Create ID with WhatsApp Alerts</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/my-matches"
-                className="w-full sm:w-auto px-4 sm:px-5 py-3 sm:py-3.5 bg-emerald-900/60 hover:bg-emerald-800 border border-emerald-600/40 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-4 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-xs sm:text-sm rounded-lg transition-colors flex items-center justify-center gap-2"
               >
                 <span>View Suitable For You</span>
               </Link>
@@ -407,7 +410,7 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 mb-8 sm:mb-14">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-2 sm:mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-2 sm:mb-3">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
                 <span>HYPERLOCAL CIVIC NETWORK</span>
               </div>
@@ -428,10 +431,10 @@ export const LandingPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
             {/* Step 1 */}
-            <div className="bg-slate-50/80 border border-slate-200/90 rounded-3xl p-5 sm:p-8 flex flex-col justify-between hover:shadow-md transition-all group">
+            <div className="bg-slate-50/80 border border-slate-200/90 rounded-xl p-5 sm:p-7 flex flex-col justify-between hover:shadow-md transition-all group">
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-black text-sm shadow-xs">
+                  <span className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-emerald-700 text-white flex items-center justify-center font-black text-sm shadow-xs">
                     01
                   </span>
                   <span className="text-[11px] font-mono font-bold text-slate-400 uppercase">
@@ -466,10 +469,10 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Step 2 */}
-            <div className="bg-slate-50/80 border border-slate-200/90 rounded-3xl p-5 sm:p-8 flex flex-col justify-between hover:shadow-md transition-all group">
+            <div className="bg-slate-50/80 border border-slate-200/90 rounded-xl p-5 sm:p-7 flex flex-col justify-between hover:shadow-md transition-all group">
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-black text-sm shadow-xs">
+                  <span className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-emerald-700 text-white flex items-center justify-center font-black text-sm shadow-xs">
                     02
                   </span>
                   <span className="text-[11px] font-mono font-bold text-slate-400 uppercase">
@@ -504,10 +507,10 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-slate-50/80 border border-slate-200/90 rounded-3xl p-5 sm:p-8 flex flex-col justify-between hover:shadow-md transition-all group">
+            <div className="bg-slate-50/80 border border-slate-200/90 rounded-xl p-5 sm:p-7 flex flex-col justify-between hover:shadow-md transition-all group">
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-black text-sm shadow-xs">
+                  <span className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-emerald-700 text-white flex items-center justify-center font-black text-sm shadow-xs">
                     03
                   </span>
                   <span className="text-[11px] font-mono font-bold text-slate-400 uppercase">
@@ -578,61 +581,61 @@ export const LandingPage: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-8">
             {/* Column 1: Shelters */}
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-4 sm:p-7 shadow-clean flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div className="bg-white border border-slate-200/90 rounded-xl p-4 sm:p-6 shadow-xs flex flex-col justify-between space-y-4 sm:space-y-6">
               <div>
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center font-bold">
                       <Heart className="w-4 h-4 fill-rose-600" />
                     </div>
                     <h3 className="font-extrabold text-sm text-slate-900">Shelters & Old Age Homes</h3>
                   </div>
-                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                     VERIFIED
                   </span>
                 </div>
 
                 <div className="mt-4 space-y-3.5">
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1.5">
+                  <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">Aastha Vriddhashram</span>
                       <span className="text-[10px] text-slate-500 font-medium">Old Palasia</span>
                     </div>
                     <p className="text-[11px] text-slate-600 leading-snug">Home to 18 elderly residents without immediate family.</p>
                     <div className="flex flex-wrap gap-1 pt-1">
-                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded-md text-[10px] font-medium text-slate-700">
+                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-[10px] font-medium text-slate-700">
                         Blankets & Shawls
                       </span>
-                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded-md text-[10px] font-medium text-slate-700">
+                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-[10px] font-medium text-slate-700">
                         Walking Sticks
                       </span>
                     </div>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1.5">
+                  <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">Snehalaya Bal Sadan</span>
                       <span className="text-[10px] text-slate-500 font-medium">Vijay Nagar</span>
                     </div>
                     <p className="text-[11px] text-slate-600 leading-snug">Care and schooling for 42 destitute and orphaned children.</p>
                     <div className="flex flex-wrap gap-1 pt-1">
-                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded-md text-[10px] font-medium text-slate-700">
+                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-[10px] font-medium text-slate-700">
                         School Bags
                       </span>
-                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded-md text-[10px] font-medium text-slate-700">
+                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-[10px] font-medium text-slate-700">
                         Winter Sweaters
                       </span>
                     </div>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1.5">
+                  <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">Annapurna Roti Bank</span>
                       <span className="text-[10px] text-slate-500 font-medium">Chhappan Dukan</span>
                     </div>
                     <p className="text-[11px] text-slate-600 leading-snug">Collecting safe surplus food from hostels & family events.</p>
                     <div className="flex flex-wrap gap-1 pt-1">
-                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded-md text-[10px] font-medium text-slate-700">
+                      <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-[10px] font-medium text-slate-700">
                         Fresh Cooked Meals
                       </span>
                     </div>
@@ -650,57 +653,54 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Column 2: Technicians */}
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-4 sm:p-7 shadow-clean flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div className="bg-white border border-slate-200/90 rounded-xl p-4 sm:p-6 shadow-xs flex flex-col justify-between space-y-4 sm:space-y-6">
               <div>
                 <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
                       <Wrench className="w-4 h-4" />
                     </div>
                     <h3 className="font-extrabold text-sm text-slate-900">Verified Technicians</h3>
                   </div>
-                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-                    DIRECT CALL
+                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    DIRECT CONTACT
                   </span>
                 </div>
 
                 <div className="mt-3.5 sm:mt-4 space-y-2.5 sm:space-y-3.5">
-                  <div className="p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
+                  <div className="p-3 sm:p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">Rameshwar "Ramesh" Kumar</span>
                       <span className="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">₹150 visit</span>
                     </div>
                     <p className="text-[11px] text-slate-600">Nal Mistri (Plumber) • 12 yrs in Indore • Palasia</p>
-                    <div className="flex items-center gap-2 pt-1 text-[11px] text-slate-700 font-semibold">
-                      <span className="text-amber-500 font-bold">⭐ 4.9 (128)</span>
-                      <span>•</span>
-                      <span className="text-slate-500">Tank valves, tap leakage</span>
+                    <div className="flex items-center gap-1.5 pt-1 text-[11px] text-emerald-700 font-semibold">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Verified Local Professional • Tank valves, tap repair</span>
                     </div>
                   </div>
 
-                  <div className="p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
+                  <div className="p-3 sm:p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">Vikram Sharma</span>
                       <span className="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">₹200 visit</span>
                     </div>
                     <p className="text-[11px] text-slate-600">Bijli Mistri (Electrician) • 9 yrs • Bhawarkua</p>
-                    <div className="flex items-center gap-2 pt-1 text-[11px] text-slate-700 font-semibold">
-                      <span className="text-amber-500 font-bold">⭐ 4.8 (94)</span>
-                      <span>•</span>
-                      <span className="text-slate-500">Tripping MCB, fan regulator</span>
+                    <div className="flex items-center gap-1.5 pt-1 text-[11px] text-emerald-700 font-semibold">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Certified Electrician • Tripping MCB, fan regulator</span>
                     </div>
                   </div>
 
-                  <div className="p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
+                  <div className="p-3 sm:p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">Sunil Patidar</span>
                       <span className="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">₹250 visit</span>
                     </div>
                     <p className="text-[11px] text-slate-600">PC Hardware & Diagnostics • Geeta Bhawan</p>
-                    <div className="flex items-center gap-2 pt-1 text-[11px] text-slate-700 font-semibold">
-                      <span className="text-amber-500 font-bold">⭐ 4.9 (67)</span>
-                      <span>•</span>
-                      <span className="text-slate-500">SMPS, motherboard, OS recovery</span>
+                    <div className="flex items-center gap-1.5 pt-1 text-[11px] text-emerald-700 font-semibold">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Hardware Specialist • SMPS, motherboard, OS recovery</span>
                     </div>
                   </div>
                 </div>
@@ -716,40 +716,40 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Column 3: Campus Marketplace */}
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-4 sm:p-7 shadow-clean flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div className="bg-white border border-slate-200/90 rounded-xl p-4 sm:p-6 shadow-xs flex flex-col justify-between space-y-4 sm:space-y-6">
               <div>
                 <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
                       <ShoppingBag className="w-4 h-4" />
                     </div>
                     <h3 className="font-extrabold text-sm text-slate-900">Campus Marketplace Deals</h3>
                   </div>
-                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-                    LOW PRICES
+                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    CAMPUS GEAR
                   </span>
                 </div>
 
                 <div className="mt-3.5 sm:mt-4 space-y-2.5 sm:space-y-3.5">
-                  <div className="p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
+                  <div className="p-3 sm:p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">3rd Year B.Tech CSE Books</span>
                       <span className="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">₹350</span>
                     </div>
                     <p className="text-[11px] text-slate-600 leading-snug">Galvin OS, Korth DBMS, Tanenbaum CN • SGSITS Hostel 2</p>
-                    <div className="text-[10px] text-slate-400">Original price ₹1,800 • Saved ₹1,450</div>
+                    <div className="text-[10px] text-slate-400">Semester reference set</div>
                   </div>
 
-                  <div className="p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
+                  <div className="p-3 sm:p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">Hero Sprint 26T Cycle</span>
                       <span className="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">₹1,200</span>
                     </div>
                     <p className="text-[11px] text-slate-600 leading-snug">Single speed, good brakes, front basket • Bhawarkua</p>
-                    <div className="text-[10px] text-slate-400">Passing out 4th year senior sale</div>
+                    <div className="text-[10px] text-slate-400">Verified student listing</div>
                   </div>
 
-                  <div className="p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
+                  <div className="p-3 sm:p-3.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1 sm:space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-slate-900">Kenstar Room Desert Cooler</span>
                       <span className="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">₹1,500</span>
@@ -776,8 +776,8 @@ export const LandingPage: React.FC = () => {
       <section className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 py-8 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
-            <div className="p-4 sm:p-6 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-2 sm:space-y-2.5">
-              <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+            <div className="p-4 sm:p-6 rounded-xl border border-slate-200/80 bg-slate-50/60 space-y-2 sm:space-y-2.5">
+              <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
                 <Coins className="w-4 sm:w-5 h-4 sm:h-5" />
               </div>
               <h4 className="font-bold text-sm text-slate-900">Zero Commission</h4>
@@ -786,8 +786,8 @@ export const LandingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-2 sm:space-y-2.5">
-              <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+            <div className="p-4 sm:p-6 rounded-xl border border-slate-200/80 bg-slate-50/60 space-y-2 sm:space-y-2.5">
+              <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
                 <MessageSquare className="w-4 sm:w-5 h-4 sm:h-5" />
               </div>
               <h4 className="font-bold text-sm text-slate-900">Automated WhatsApp Radar</h4>
@@ -796,8 +796,8 @@ export const LandingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-2 sm:space-y-2.5">
-              <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+            <div className="p-4 sm:p-6 rounded-xl border border-slate-200/80 bg-slate-50/60 space-y-2 sm:space-y-2.5">
+              <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
                 <MapPin className="w-4 sm:w-5 h-4 sm:h-5" />
               </div>
               <h4 className="font-bold text-sm text-slate-900">Hyperlocal Radius</h4>
@@ -806,8 +806,8 @@ export const LandingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-2 sm:space-y-2.5">
-              <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+            <div className="p-4 sm:p-6 rounded-xl border border-slate-200/80 bg-slate-50/60 space-y-2 sm:space-y-2.5">
+              <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
                 <ShieldCheck className="w-4 sm:w-5 h-4 sm:h-5" />
               </div>
               <h4 className="font-bold text-sm text-slate-900">Verified Civic Identities</h4>

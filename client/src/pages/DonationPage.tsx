@@ -18,6 +18,7 @@ import {
   Star,
   AlertCircle,
   Radio,
+  MessageSquare,
 } from 'lucide-react';
 import { useLocality } from '../context/LocalityContext';
 import { WhatsAppShareModal, ShareData } from '../components/ui/WhatsAppShareModal';
@@ -228,7 +229,7 @@ export const DonationPage: React.FC = () => {
     const updated = [alert, ...foodAlerts];
     setFoodAlerts(updated);
     localStorage.setItem('openhand_food_alerts_v1', JSON.stringify(updated));
-    setWaToastMessage(`🚨 Food Rescue Alert Dispatched! Volunteers and Annapurna Roti Bank alerted for ${alert.venueName}.`);
+    setWaToastMessage(`Food Rescue Alert Dispatched: Volunteers and Annapurna Roti Bank alerted for ${alert.venueName}.`);
     setTimeout(() => setWaToastMessage(null), 9000);
   };
 
@@ -268,7 +269,7 @@ export const DonationPage: React.FC = () => {
     setDonations(updated);
     localStorage.setItem('openhand_donations_list', JSON.stringify(updated));
     setIsDonateModalOpen(false);
-    setWaToastMessage(`📲 Automated WhatsApp Alerts Dispatched! 2 verified Indore shelters (Aastha Vriddhashram & Goonj Collection Center) with matching wishlists have been notified.`);
+    setWaToastMessage(`WhatsApp Alerts Dispatched: 2 verified Indore shelters (Aastha Vriddhashram & Goonj Collection Center) with matching wishlists have been notified.`);
     setTimeout(() => setWaToastMessage(null), 8000);
     setNewDonation({
       title: '',
@@ -297,14 +298,14 @@ export const DonationPage: React.FC = () => {
       {waToastMessage && (
         <div className="sticky top-16 z-40 bg-[#075E54] text-white py-3 px-4 shadow-md flex items-center justify-between">
           <div className="max-w-7xl mx-auto flex items-center gap-2.5 text-xs sm:text-sm font-semibold">
-            <span className="text-lg">📲</span>
+            <MessageSquare className="w-4 h-4 text-emerald-300 shrink-0" />
             <span>{waToastMessage}</span>
           </div>
           <button
             onClick={() => setWaToastMessage(null)}
-            className="text-white/80 hover:text-white text-xs px-2 py-1 font-bold"
+            className="text-white/80 hover:text-white p-1"
           >
-            ✕
+            <X className="w-4 h-4" />
           </button>
         </div>
       )}
@@ -313,7 +314,7 @@ export const DonationPage: React.FC = () => {
       <div className="bg-white border-b border-slate-200 py-4 sm:py-8 px-3.5 sm:px-8 lg:px-12 xl:px-16">
         <div className="max-w-[1560px] w-full mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-1.5 sm:mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold mb-1.5 sm:mb-3">
               <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
               <span>OpenHand Community Giving & Care</span>
             </div>
@@ -328,15 +329,15 @@ export const DonationPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={() => setIsFoodRescueModalOpen(true)}
-              className="px-4 sm:px-5 py-2.5 sm:py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+              className="px-4 sm:px-5 py-2.5 sm:py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs sm:text-sm rounded-lg transition-all shadow-md flex items-center justify-center gap-2"
             >
               <Utensils className="w-4 h-4" />
-              <span>🚨 Report Food for Pickup</span>
+              <span>Report Food for Pickup</span>
             </button>
 
             <button
               onClick={() => setIsDonateModalOpen(true)}
-              className="px-5 sm:px-6 py-2.5 sm:py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+              className="px-5 sm:px-6 py-2.5 sm:py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-lg transition-all shadow-md flex items-center justify-center gap-2"
             >
               <Gift className="w-4 h-4" />
               <span>Donate Surplus Items</span>
@@ -349,9 +350,8 @@ export const DonationPage: React.FC = () => {
       <div className="bg-amber-500/10 border-b border-amber-300/60 py-2.5 sm:py-3 px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="max-w-[1560px] w-full mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-2.5 sm:gap-3 text-xs">
           <div className="flex items-start sm:items-center gap-2.5 text-amber-900 font-medium">
-            <span className="relative flex h-3 w-3 shrink-0 mt-0.5 sm:mt-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+            <span className="relative flex h-2.5 w-2.5 shrink-0 mt-0.5 sm:mt-0">
+              <span className="inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
             </span>
             <span className="leading-snug">
               <strong>Midnight Food Rescue:</strong> Untouched surplus banquet/mess food picked up within 45-60 mins by Annapurna Roti Bank & volunteers.
@@ -392,7 +392,7 @@ export const DonationPage: React.FC = () => {
               }`}
             >
               <Utensils className="w-3.5 h-3.5 text-slate-900" />
-              <span>🚨 Food Rescue ({foodAlerts.length})</span>
+              <span>Food Rescue ({foodAlerts.length})</span>
             </button>
 
             <button
@@ -513,7 +513,7 @@ export const DonationPage: React.FC = () => {
 
                     <div className="pt-2">
                       <div className="text-[11px] font-bold uppercase tracking-wider text-red-600 mb-1.5 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
                         <span>Urgent Wishlist Needs Right Now:</span>
                       </div>
                       <div className="flex flex-wrap gap-1.5">
@@ -617,12 +617,12 @@ export const DonationPage: React.FC = () => {
             {foodAlerts.map((alert) => (
               <div
                 key={alert.id}
-                className="bg-white border-2 border-amber-200/90 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+                className="bg-white border-2 border-amber-200/90 rounded-xl p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-2">
                     <span className="px-2.5 py-1 bg-amber-100 text-amber-900 font-bold text-[10px] rounded-md uppercase tracking-wider flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
+                      <span className="w-2 h-2 rounded-full bg-amber-500" />
                       <span>{alert.mealType}</span>
                     </span>
                     <span className="text-[11px] font-mono font-semibold text-slate-500">

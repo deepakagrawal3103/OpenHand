@@ -419,7 +419,7 @@ export const MarketplacePage: React.FC = () => {
               Buy, Sell & Rent Pre-Owned Gear
             </h1>
             <p className="text-xs sm:text-base text-slate-600 mt-1 sm:mt-2 max-w-3xl leading-relaxed">
-              Buy or sell used books, calculators, and cycles—or <strong>rent uncommon equipment</strong> like <strong>wheelchairs, walkers, medical gear, rotary drills, and projectors</strong> from neighbours for a few days at nominal rates.
+              Buy or sell used books, calculators, and cycles, or <strong>rent uncommon equipment</strong> like <strong>wheelchairs, walkers, medical gear, rotary drills, and projectors</strong> from neighbours for a few days at nominal rates.
             </p>
           </div>
 
@@ -459,7 +459,7 @@ export const MarketplacePage: React.FC = () => {
               }`}
             >
               <Repeat className="w-3.5 h-3.5" />
-              <span>🔄 For Rent ({rentCount})</span>
+              <span>For Rent ({rentCount})</span>
             </button>
             <button
               onClick={() => setModeFilter('SALE')}
@@ -470,7 +470,7 @@ export const MarketplacePage: React.FC = () => {
               }`}
             >
               <Tag className="w-3.5 h-3.5" />
-              <span>🏷️ For Sale ({saleCount})</span>
+              <span>For Sale ({saleCount})</span>
             </button>
           </div>
 
@@ -525,13 +525,13 @@ export const MarketplacePage: React.FC = () => {
           <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1 max-w-full">
             {[
               { id: 'ALL', label: 'All Categories' },
-              { id: 'MEDICAL_RENTAL', label: '♿ Wheelchair & Walker (Rent)' },
-              { id: 'TOOLS', label: '🛠️ Heavy Tools & Drills' },
-              { id: 'EVENT_GEAR', label: '📽️ Projector & Camping' },
-              { id: 'BOOKS', label: '📚 Books & Notes' },
-              { id: 'ELECTRONICS', label: '⚡ Electronics' },
-              { id: 'MOBILITY', label: '🚲 Bicycles' },
-              { id: 'HOSTEL', label: '🛏️ Hostel Stuff' },
+              { id: 'MEDICAL_RENTAL', label: 'Wheelchair & Walker (Rent)' },
+              { id: 'TOOLS', label: 'Heavy Tools & Drills' },
+              { id: 'EVENT_GEAR', label: 'Projector & Camping' },
+              { id: 'BOOKS', label: 'Books & Notes' },
+              { id: 'ELECTRONICS', label: 'Electronics' },
+              { id: 'MOBILITY', label: 'Bicycles' },
+              { id: 'HOSTEL', label: 'Hostel Essentials' },
             ].map((cat) => (
               <button
                 key={cat.id}
@@ -770,7 +770,7 @@ export const MarketplacePage: React.FC = () => {
                   >
                     <Repeat className="w-4 h-4 text-indigo-600 shrink-0" />
                     <div>
-                      <div className="text-xs">🔄 Put On Rent</div>
+                      <div className="text-xs">Put On Rent</div>
                       <div className="text-[10px] text-slate-500 font-normal">Wheelchair, Walker, Tools...</div>
                     </div>
                   </button>
@@ -786,7 +786,7 @@ export const MarketplacePage: React.FC = () => {
                   >
                     <Tag className="w-4 h-4 text-emerald-600 shrink-0" />
                     <div>
-                      <div className="text-xs">🏷️ Sell Item</div>
+                      <div className="text-xs">Sell Item</div>
                       <div className="text-[10px] text-slate-500 font-normal">Books, Calculator, Cycles...</div>
                     </div>
                   </button>
@@ -819,13 +819,13 @@ export const MarketplacePage: React.FC = () => {
                     }
                     className="w-full p-2.5 border border-slate-200 rounded-lg bg-slate-50 text-xs font-medium"
                   >
-                    <option value="MEDICAL_RENTAL">♿ Medical & Mobility (Wheelchair/Walker)</option>
-                    <option value="TOOLS">🛠️ Heavy Tools & Workshop</option>
-                    <option value="EVENT_GEAR">📽️ Projector & Camping</option>
-                    <option value="BOOKS">📚 Books & Exam Notes</option>
-                    <option value="ELECTRONICS">⚡ Electronics & Kits</option>
-                    <option value="MOBILITY">🚲 Bicycles / Transport</option>
-                    <option value="HOSTEL">🛏️ Hostel Equipment</option>
+                    <option value="MEDICAL_RENTAL">Medical & Mobility (Wheelchair/Walker)</option>
+                    <option value="TOOLS">Heavy Tools & Workshop</option>
+                    <option value="EVENT_GEAR">Projector & Camping</option>
+                    <option value="BOOKS">Books & Exam Notes</option>
+                    <option value="ELECTRONICS">Electronics & Kits</option>
+                    <option value="MOBILITY">Bicycles / Transport</option>
+                    <option value="HOSTEL">Hostel Equipment</option>
                   </select>
                 </div>
 
@@ -982,7 +982,7 @@ export const MarketplacePage: React.FC = () => {
                     ? 'bg-indigo-100 text-indigo-900 border border-indigo-200'
                     : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
                 }`}>
-                  {activeItem.listingType === 'RENT' ? '🔄 AVAILABLE FOR RENT' : '🏷️ FOR SALE'}
+                  {activeItem.listingType === 'RENT' ? 'AVAILABLE FOR RENT' : 'FOR SALE'}
                 </span>
                 <span className="text-[10px] text-slate-400 font-mono">#{activeItem.id}</span>
               </div>

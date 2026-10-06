@@ -144,8 +144,8 @@ export const HelperProofUploadPage: React.FC = () => {
           <div className="p-3 bg-brand-light/70 border border-brand/20 rounded-[6px] flex items-start gap-2.5 text-xs text-brand font-mono">
             <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5" />
             <div>
-              <span>Dual-Proof AI Telemetry Match: </span>
-              <span className="font-bold">99.8% Confidence</span>
+              <span>Dual-Proof Telemetry Verification: </span>
+              <span className="font-bold">System Checked</span>
               <div className="text-[10px] text-ink-muted mt-0.5">
                 Timestamp, EXIF location match and hardware signatures verified before publishing to peer ledger.
               </div>

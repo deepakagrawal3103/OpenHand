@@ -11,14 +11,14 @@ interface ReviewModalProps {
 }
 
 const AVAILABLE_ENDORSEMENT_BADGES = [
-  '⚡ On-Time Arrival',
-  '🧹 Clean & Sanitized',
-  '💰 Fair & Honest Price',
-  '🤝 Respectful & Polite',
-  '📚 100% Genuine Item',
-  '🛡️ Safe for Students',
-  '🔧 Expert Diagnosis',
-  '✅ Zero Bargain Hassle',
+  'On-Time Arrival',
+  'Clean & Sanitized',
+  'Fair & Honest Price',
+  'Respectful & Polite',
+  '100% Genuine Item',
+  'Safe for Students',
+  'Expert Diagnosis',
+  'Zero Bargain Hassle',
 ];
 
 export const ReviewModal: React.FC<ReviewModalProps> = ({
@@ -32,8 +32,8 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
   const [rating, setRating] = useState<number>(5);
   const [hoverRating, setHoverRating] = useState<number>(0);
   const [selectedBadges, setSelectedBadges] = useState<string[]>([
-    '⚡ On-Time Arrival',
-    '🤝 Respectful & Polite',
+    'On-Time Arrival',
+    'Respectful & Polite',
   ]);
   const [comment, setComment] = useState<string>('');
   const [submitted, setSubmitted] = useState<boolean>(false);

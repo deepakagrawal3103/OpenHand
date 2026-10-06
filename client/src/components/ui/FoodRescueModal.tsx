@@ -61,7 +61,7 @@ export const FoodRescueModal: React.FC<FoodRescueModalProps> = ({
 
   const handleSendWhatsAppDispatch = () => {
     if (!successAlert) return;
-    const msg = `🚨 *URGENT SURPLUS FOOD RESCUE ALERT - INDORE* 🍲\n\n🍱 *Food Available:* ${successAlert.quantity} (${successAlert.mealType})\n📍 *Venue & Area:* ${successAlert.venueName}, ${successAlert.location}\n⏰ *Safe Consumption Window:* ${successAlert.safeUntil}\n📞 *Direct Pickup Contact:* ${successAlert.contactName} (${successAlert.contactPhone})\n\n👉 *Claim via OpenHand Food Rescue:* http://localhost:5173/donate\n\n_Please alert Annapurna Roti Bank, Robin Hood Army, or nearby shelters to collect immediately._`;
+    const msg = `*URGENT SURPLUS FOOD RESCUE ALERT: INDORE*\n\n*Food Available:* ${successAlert.quantity} (${successAlert.mealType})\n*Venue & Area:* ${successAlert.venueName}, ${successAlert.location}\n*Safe Consumption Window:* ${successAlert.safeUntil}\n*Direct Pickup Contact:* ${successAlert.contactName} (${successAlert.contactPhone})\n\n*Claim via OpenHand Food Rescue:* https://openhand-indore.onrender.com/donate\n\n_Please alert Annapurna Roti Bank, Robin Hood Army, or nearby shelters to collect immediately._`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -77,8 +77,8 @@ export const FoodRescueModal: React.FC<FoodRescueModalProps> = ({
 
         {successAlert ? (
           <div className="text-center py-6 space-y-4">
-            <div className="w-16 h-16 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold shadow-xs">
-              🍲
+            <div className="w-16 h-16 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center mx-auto text-3xl font-bold shadow-xs">
+              <Utensils className="w-8 h-8 text-amber-700" />
             </div>
             <div>
               <span className="text-[10px] font-mono font-bold uppercase text-amber-800 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">

@@ -27,7 +27,7 @@ export const StatusChip: React.FC<StatusChipProps> = ({ status, size = 'md' }) =
       label = 'Task Accepted';
       break;
     case 'IN_PROGRESS':
-      styles = 'bg-amber-50 text-amber-800 border-amber-300 animate-pulse';
+      styles = 'bg-amber-50 text-amber-800 border-amber-300';
       label = 'In Progress';
       break;
     case 'ARRIVED':

@@ -111,7 +111,7 @@ export const TaskChatPage: React.FC = () => {
           </div>
 
           <div className="text-xs font-mono text-brand flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
             <span>Direct Chat</span>
           </div>
         </div>

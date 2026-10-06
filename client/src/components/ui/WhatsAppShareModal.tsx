@@ -34,22 +34,22 @@ export const WhatsAppShareModal: React.FC<WhatsAppShareModalProps> = ({
   const generateShareMessage = (): string => {
     switch (data.type) {
       case 'RENTAL':
-        return `🔄 *OpenHand Indore: Available for RENT!*\n\n📦 *Item:* ${data.title}\n💰 *Rental Rate:* ₹${data.price}/${data.rentalPeriod || 'day'}${data.deposit ? ` (Refundable Deposit: ₹${data.deposit})` : ''}\n📍 *Pickup Area:* ${data.location}\n👤 *Contact:* ${data.sellerOrContact || 'Indore Resident'}\n\n💡 *Why rent?* Great for temporary medical recovery, surgery, or short-term work.\n👉 *View & Rent on OpenHand:* ${currentUrl}\n\n_100% Free & Direct Civic Network for Indore_`;
+        return `*OpenHand Indore: Available for RENT*\n\n*Item:* ${data.title}\n*Rental Rate:* ₹${data.price}/${data.rentalPeriod || 'day'}${data.deposit ? ` (Refundable Deposit: ₹${data.deposit})` : ''}\n*Pickup Area:* ${data.location}\n*Contact:* ${data.sellerOrContact || 'Indore Resident'}\n\n*Note:* Suitable for medical recovery, surgery rehabilitation, or short-term utility.\n*View & Rent on OpenHand:* ${currentUrl}\n\nDirect civic network for Indore residents.`;
 
       case 'MARKET_ITEM':
-        return `🏷️ *OpenHand Indore: Student Campus Deal!*\n\n📚 *Item:* ${data.title}\n💰 *Price:* ₹${data.price} (Student-friendly price)\n📍 *Location:* ${data.location}\n👤 *Posted by:* ${data.sellerOrContact || 'Student'}\n\n👉 *Claim or inspect listing:* ${currentUrl}\n\n_Direct handoff with zero commission._`;
+        return `*OpenHand Indore: Student Marketplace Listing*\n\n*Item:* ${data.title}\n*Price:* ₹${data.price}\n*Location:* ${data.location}\n*Posted by:* ${data.sellerOrContact || 'Student'}\n\n*View Listing:* ${currentUrl}\n\nDirect peer handoff with zero commission.`;
 
       case 'DONATION':
-        return `🙏 *OpenHand Indore: Urgent Shelter Donation Appeal!*\n\n🏠 *Shelter:* ${data.title}\n📦 *Urgent Wishlist:* ${data.details || 'Winter Shawls, Blankets & Supplies'}\n📍 *Location:* ${data.location}\n\n👉 *Support or coordinate direct drop-off:* ${currentUrl}\n\n_Let's support our local Indore shelters._`;
+        return `*OpenHand Indore: Urgent Shelter Support Appeal*\n\n*Shelter:* ${data.title}\n*Urgent Needs:* ${data.details || 'Winter Shawls, Blankets & Supplies'}\n*Location:* ${data.location}\n\n*Coordinate Direct Drop-off:* ${currentUrl}\n\nSupporting local verified Indore shelters.`;
 
       case 'FOOD_RESCUE':
-        return `🍲 *URGENT: Surplus Food Available in Indore!*\n\n🍱 *Quantity:* ${data.title}\n📍 *Pickup Venue:* ${data.location}\n⏰ *Safe till:* ${data.details || 'Next 3 hours'}\n📞 *Coordinate pickup:* ${data.sellerOrContact}\n\n👉 *View Food Rescue Alert:* ${currentUrl}\n\n_Please share in your Indore hostel or volunteer groups to prevent food wastage._`;
+        return `*URGENT: Surplus Food Available in Indore*\n\n*Quantity / Items:* ${data.title}\n*Pickup Venue:* ${data.location}\n*Safe Until:* ${data.details || 'Next 3 hours'}\n*Coordinate Pickup:* ${data.sellerOrContact}\n\n*View Food Rescue Alert:* ${currentUrl}\n\nPlease share in your Indore hostel or volunteer groups to prevent food wastage.`;
 
       case 'SERVICE_PROVIDER':
-        return `🔧 *Verified Local Technician on OpenHand Indore*\n\n👷 *Name:* ${data.title}\n🛠️ *Trade / Work:* ${data.details || 'Plumbing & Electrical Repair'}\n💵 *Inspection Visit Fee:* ₹${data.price || 150}\n📍 *Serving Area:* ${data.location}\n\n👉 *Call or message on WhatsApp:* ${currentUrl}\n\n_Verified local mistri with zero middleman markup._`;
+        return `*Verified Local Technician: OpenHand Indore*\n\n*Name:* ${data.title}\n*Trade / Service:* ${data.details || 'Plumbing & Electrical Repair'}\n*Inspection Fee:* ₹${data.price || 150}\n*Service Area:* ${data.location}\n\n*Contact:* ${currentUrl}\n\nVerified local technician with direct neighborhood pricing.`;
 
       default:
-        return `📢 *OpenHand Indore Community Listing*\n\n*${data.title}*\n📍 Location: ${data.location}\n👉 Details: ${currentUrl}`;
+        return `*OpenHand Indore Community Listing*\n\n*${data.title}*\n*Location:* ${data.location}\n*Details:* ${currentUrl}`;
     }
   };
 
@@ -83,7 +83,7 @@ export const WhatsAppShareModal: React.FC<WhatsAppShareModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-4 animate-in fade-in zoom-in-95 duration-150">
+      <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl relative space-y-4 animate-in fade-in zoom-in-95 duration-150">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-lg"
@@ -92,7 +92,7 @@ export const WhatsAppShareModal: React.FC<WhatsAppShareModalProps> = ({
         </button>
 
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider">
             <Share2 className="w-3 h-3 text-emerald-600" />
             <span>COMMUNITY BROADCAST</span>
           </div>

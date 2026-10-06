@@ -40,8 +40,8 @@ export const RequestCard: React.FC<RequestCardProps> = ({ request }) => {
         {/* AI Insight Snippet if present */}
         {hasAi && (
           <div className="bg-brand-light/60 border border-brand/20 rounded-[6px] p-2 mb-3 flex items-start gap-2 text-xs">
-            <span className="px-1 py-0.2 bg-brand text-white font-mono text-[9px] uppercase rounded-[2px] mt-0.5 shrink-0">
-              AI
+            <span className="px-1.5 py-0.5 bg-brand text-white font-mono text-[9px] uppercase rounded-[2px] mt-0.5 shrink-0 font-bold">
+              TRIAGE
             </span>
             <span className="text-brand font-medium line-clamp-1 text-[11px]">
               {request.aiAudit?.summary || 'Triage ready: verified campus blockers.'}

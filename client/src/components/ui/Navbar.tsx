@@ -64,9 +64,9 @@ export const Navbar: React.FC = () => {
         {/* 1. BRAND LOGO & LOCALITY SELECTOR */}
         <div className="flex items-center gap-3 sm:gap-4 shrink-0">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-900 group-hover:from-emerald-500 group-hover:to-emerald-800 transition-all duration-300 flex items-center justify-center text-white font-extrabold text-base shadow-[0_4px_12px_rgba(4,120,87,0.3)]">
-              <span>🤝</span>
-              <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 border-2 border-white rounded-full animate-pulse" />
+            <div className="relative w-9 h-9 rounded-lg bg-emerald-900 border border-emerald-700/60 transition-colors flex items-center justify-center text-white font-extrabold text-sm shadow-xs">
+              <span className="font-mono font-black text-emerald-300">OH</span>
+              <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-emerald-400 border border-white rounded-full" />
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-base tracking-tight text-slate-900 leading-none group-hover:text-emerald-800 transition-colors">
@@ -183,8 +183,8 @@ export const Navbar: React.FC = () => {
                   : 'text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100/70 border border-emerald-200/70 font-semibold'
               }`}
             >
-              <span>🎯 For You</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Suitable For You</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             </Link>
           )}
 
@@ -196,7 +196,7 @@ export const Navbar: React.FC = () => {
                 : 'text-slate-500 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
-            <Radio className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
+            <Radio className="w-3.5 h-3.5 text-emerald-600" />
             <span>Live Radar</span>
           </Link>
         </nav>
@@ -306,7 +306,7 @@ export const Navbar: React.FC = () => {
                       to="/my-matches"
                       className="px-3 py-2 rounded-xl hover:bg-slate-50 flex items-center justify-between text-slate-700 hover:text-slate-900 transition-colors font-medium"
                     >
-                      <span className="flex items-center gap-2">🎯 Matched For You</span>
+                      <span className="flex items-center gap-2">Matched For You</span>
                       <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-900 font-bold">
                         New
                       </span>
@@ -315,14 +315,14 @@ export const Navbar: React.FC = () => {
                       to="/create-id"
                       className="px-3 py-2 rounded-xl hover:bg-slate-50 flex items-center justify-between text-slate-700 hover:text-slate-900 transition-colors font-medium"
                     >
-                      <span>⚙️ My ID & WhatsApp Alerts</span>
+                      <span>My ID & WhatsApp Alerts</span>
                     </Link>
                     {user.role === 'HELPER' && (
                       <Link
                         to="/helper"
                         className="px-3 py-2 rounded-xl hover:bg-slate-50 flex items-center justify-between text-slate-700 hover:text-slate-900 transition-colors font-medium"
                       >
-                        <span>🛠️ Helper Cockpit</span>
+                        <span>Helper Cockpit</span>
                       </Link>
                     )}
                   </div>

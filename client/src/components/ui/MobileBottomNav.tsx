@@ -94,7 +94,7 @@ export const MobileBottomNav: React.FC = () => {
                   }`}
                 />
                 {item.badge && (
-                  <span className="absolute -top-1 -right-3.5 px-1 py-0.2 bg-amber-500 text-slate-950 font-black text-[8px] rounded-full uppercase tracking-tighter animate-pulse shadow-xs">
+                  <span className="absolute -top-1 -right-3.5 px-1 py-0.2 bg-amber-500 text-slate-950 font-black text-[8px] rounded-full uppercase tracking-tighter shadow-xs">
                     {item.badge}
                   </span>
                 )}

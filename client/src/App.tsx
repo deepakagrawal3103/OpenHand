@@ -29,6 +29,9 @@ import { DonationPage } from './pages/DonationPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { CreateIdPage } from './pages/CreateIdPage';
 import { MyMatchesPage } from './pages/MyMatchesPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
 
 export function App() {
   return (
@@ -69,13 +72,17 @@ export function App() {
                 <Route path="/app/requests/:id/verify" element={<VerificationPage />} />
                 <Route path="/app/messages/:id" element={<TaskChatPage />} />
 
+                {/* Legal & Compliance Routes */}
+                <Route path="/privacy" element={<PrivacyPage />} />
+                <Route path="/terms" element={<TermsPage />} />
+
                 {/* Helper Routes */}
                 <Route path="/helper" element={<HelperCockpitPage />} />
                 <Route path="/helper/tasks/:id" element={<HelperTaskPage />} />
                 <Route path="/helper/tasks/:id/proof" element={<HelperProofUploadPage />} />
 
-                {/* Fallback */}
-                <Route path="*" element={<LandingPage />} />
+                {/* Fallback 404 */}
+                <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </main>
             <Footer />

@@ -605,7 +605,7 @@ export const CreateWizardPage: React.FC = () => {
         {/* STEP 5: SUCCESS & NOTIFICATION */}
         {step === 5 && (
           <div className="bg-surface border border-line rounded-[10px] p-4 sm:p-8 shadow-clean text-center space-y-4 sm:space-y-6">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-brand mx-auto flex items-center justify-center animate-bounce">
+            <div className="w-16 h-16 rounded-full bg-emerald-100 text-brand mx-auto flex items-center justify-center">
               <CheckCircle2 className="w-9 h-9 text-brand" />
             </div>
 
@@ -624,7 +624,7 @@ export const CreateWizardPage: React.FC = () => {
             {/* Notification alert block */}
             <div className="bg-[#121A15] text-emerald-400 p-4 rounded-[8px] font-mono text-xs border border-[#23372D] max-w-md mx-auto space-y-1.5 text-left">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <span>Alerting nearby verified helpers in your locality...</span>
               </div>
               <div className="text-emerald-300/80">

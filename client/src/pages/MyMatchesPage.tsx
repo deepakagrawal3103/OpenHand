@@ -21,6 +21,7 @@ import {
   X,
   Copy,
   ChevronRight,
+  Target,
 } from 'lucide-react';
 
 interface MatchedOpportunity {
@@ -245,11 +246,11 @@ export const MyMatchesPage: React.FC = () => {
     const isWorker = user?.entityType === 'SKILLED_WORKER' || user?.role === 'HELPER';
 
     if (isNgo) {
-      return `🙏 *OpenHand Indore Alert*\nNamaste ${user?.name || 'Director Ji'},\nA new donation matching your NGO wishlist has been posted!\n\n📦 *Item:* ${item.title}\n📍 *Location:* ${item.location} (${item.distance})\n👤 *Donor:* ${item.contactPerson} (${item.contactPhone})\n💡 *Why Matched:* ${item.matchReason}\n\n👉 OpenHand Details: http://localhost:5173/donate\nPlease claim or coordinate pickup directly.`;
+      return `*OpenHand Indore Alert*\nNamaste ${user?.name || 'Director Ji'},\nA new donation matching your NGO wishlist has been posted:\n\n*Item:* ${item.title}\n*Location:* ${item.location} (${item.distance})\n*Donor:* ${item.contactPerson} (${item.contactPhone})\n*Match Context:* ${item.matchReason}\n\n*OpenHand Details:* http://localhost:5173/donate\nPlease claim or coordinate pickup directly.`;
     } else if (isWorker) {
-      return `🔧 *OpenHand Work Alert*\nNamaste ${user?.name || 'Mistri Ji'},\nA new repair job matching your skills was just posted nearby!\n\n🔨 *Task:* ${item.title}\n📍 *Location:* ${item.location} (${item.distance})\n💰 *Visit Fee:* ₹${item.fee || 150}\n👤 *Requester:* ${item.contactPerson} (${item.contactPhone})\n\n👉 Accept or view ticket: http://localhost:5173/services\nCall or reply to confirm visit!`;
+      return `*OpenHand Work Alert*\nNamaste ${user?.name || 'Mistri Ji'},\nA new repair job matching your skills was just posted nearby:\n\n*Task:* ${item.title}\n*Location:* ${item.location} (${item.distance})\n*Visit Fee:* ₹${item.fee || 150}\n*Requester:* ${item.contactPerson} (${item.contactPhone})\n\n*View Ticket:* http://localhost:5173/services\nCall or reply to confirm visit.`;
     } else {
-      return `📢 *OpenHand Community Alert*\nNamaste ${user?.name || 'Friend'},\nA new listing matching your interests was posted nearby:\n🏷️ *${item.title}*\n📍 *Location:* ${item.location}\n💰 *Price:* ₹${item.fee || 'Free'}\n👤 *Contact:* ${item.contactPerson} (${item.contactPhone})\n\n👉 View listing: http://localhost:5173/marketplace`;
+      return `*OpenHand Community Alert*\nNamaste ${user?.name || 'Friend'},\nA new listing matching your interests was posted nearby:\n\n*Listing:* ${item.title}\n*Location:* ${item.location}\n*Price:* ₹${item.fee || 'Free'}\n*Contact:* ${item.contactPerson} (${item.contactPhone})\n\n*View Listing:* http://localhost:5173/marketplace`;
     }
   };
 
@@ -258,9 +259,9 @@ export const MyMatchesPage: React.FC = () => {
   if (!user) {
     return (
       <div className="bg-[#F8FAFC] min-h-screen py-16 px-4 flex items-center justify-center font-sans">
-        <div className="bg-white border border-slate-200 rounded-2xl p-8 max-w-md w-full shadow-md text-center space-y-5">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto text-2xl font-bold">
-            🎯
+        <div className="bg-white border border-slate-200 rounded-xl p-8 max-w-md w-full shadow-md text-center space-y-5">
+          <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto text-xl font-bold">
+            <Target className="w-6 h-6 text-emerald-800" />
           </div>
           <div className="space-y-1">
             <h2 className="text-2xl font-bold text-slate-900">Sign In to View Your Matched Feed</h2>
@@ -365,12 +366,12 @@ export const MyMatchesPage: React.FC = () => {
                   <h1 className="text-2xl font-black text-slate-900">
                     {user?.name || 'Aastha Vriddhashram (Old Age Home)'}
                   </h1>
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold tracking-wide uppercase bg-emerald-50 text-emerald-800 border border-emerald-200">
                     {user?.entityType === 'NGO' || user?.role === 'ORGANIZATION'
-                      ? '🏢 Verified Indore NGO'
+                      ? 'Verified Indore NGO'
                       : user?.entityType === 'SKILLED_WORKER' || user?.role === 'HELPER'
-                      ? `🔧 Certified ${user?.primarySkill || 'Technician'}`
-                      : '👤 Campus Member'}
+                      ? `Certified ${user?.primarySkill || 'Technician'}`
+                      : 'Campus Member'}
                   </span>
                 </div>
 
@@ -510,7 +511,7 @@ export const MyMatchesPage: React.FC = () => {
                           </span>
                         )}
                         <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold text-emerald-800 bg-emerald-50 border border-emerald-200">
-                          🎯 {opp.matchScore}% Compatibility
+                          {opp.matchScore}% Compatibility
                         </span>
                       </div>
 
@@ -561,7 +562,7 @@ export const MyMatchesPage: React.FC = () => {
                         className="flex-1 sm:flex-initial px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-1.5"
                       >
                         <MessageSquare className="w-3.5 h-3.5 text-emerald-700" />
-                        <span>📲 WhatsApp Alert</span>
+                        <span>WhatsApp Alert</span>
                       </button>
 
                       {/* Direct Phone / Claim Button */}
@@ -590,12 +591,12 @@ export const MyMatchesPage: React.FC = () => {
       {/* 3. INTERACTIVE WHATSAPP DISPATCH PREVIEW MODAL */}
       {waModalOpen && selectedAlertItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full border border-slate-200 shadow-xl overflow-hidden flex flex-col">
+          <div className="bg-white rounded-xl max-w-lg w-full border border-slate-200 shadow-xl overflow-hidden flex flex-col">
             {/* WhatsApp Green Top Header */}
             <div className="bg-[#075E54] text-white p-4 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold">
-                  📱
+                <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-bold">
+                  <MessageSquare className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <h3 className="font-bold text-sm">OpenHand Automated WhatsApp Engine</h3>
@@ -625,7 +626,7 @@ export const MyMatchesPage: React.FC = () => {
                   {generateWhatsAppMessage(selectedAlertItem)}
                 </div>
                 <div className="text-right text-[10px] text-slate-400 pt-1 font-mono">
-                  {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ✓✓
+                  {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • Delivered
                 </div>
               </div>
 
